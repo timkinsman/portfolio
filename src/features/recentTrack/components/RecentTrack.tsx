@@ -20,19 +20,35 @@ export const RecentTrack = () => {
     track: recentTrack?.name ?? '',
   });
 
-  if (tracks.isLoading) {
-    return null;
-  }
-
   const track = tracks.data?.tracks.items[0];
 
+  if (tracks.isLoading || track === undefined) {
+    return (
+      <div role="status" className="inline-flex gap-2 items-center mt-4 max-w-sm animate-pulse">
+        <div className="h-6 bg-gray-200 rounded-full dark:bg-gray-700 w-6"></div>
+        <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 w-48"></div>
+      </div>
+    );
+  }
+
+  // Fallback
   if (track === undefined) {
-    return null;
+    return (
+      <div className="inline-flex gap-2 mt-4">
+        <img src={spotifyMark} alt="Spotify logo" className="h-6 w-6 dark:invert" />
+        <Link
+          href="https://open.spotify.com/track/1nM9Jgm0oInPG0yKtcEQD0?si=a901014dfe37479a"
+          target="_blank"
+        >
+          Baths - Sunspell
+        </Link>
+      </div>
+    );
   }
 
   return (
-    <div className="inline-flex gap-2">
-      <img src={spotifyMark} alt="Spotify logo" className="h-6 w-6" />
+    <div className="inline-flex gap-2 mt-4">
+      <img src={spotifyMark} alt="Spotify logo" className="h-6 w-6 dark:invert" />
       <Link href={track.uri} target="_blank">
         {track.artists[0].name} - {track.name}
       </Link>
