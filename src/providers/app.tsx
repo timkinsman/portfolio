@@ -41,7 +41,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
           <QueryClientProvider client={queryClient}>
             {process.env.NODE_ENV !== 'test' && <ReactQueryDevtools />}
             <Notifications />
-              <Router>{children}</Router>
+            <Router>{children}</Router>
           </QueryClientProvider>
         </HelmetProvider>
       </ErrorBoundary>
