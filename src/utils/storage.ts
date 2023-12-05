@@ -1,14 +1,20 @@
-const storagePrefix = 'bulletproof_react_';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+export const storagePrefix = 'portfolio_';
+
+export enum Storage {
+  theme = 'theme',
+}
 
 const storage = {
-  getToken: () => {
-    return JSON.parse(window.localStorage.getItem(`${storagePrefix}token`) as string);
+  getItem: (key: Storage) => {
+    return JSON.parse(window.localStorage.getItem(`${storagePrefix}${key}`) as string);
   },
-  setToken: (token: string) => {
-    window.localStorage.setItem(`${storagePrefix}token`, JSON.stringify(token));
+  setItem: (key: Storage, value: any) => {
+    window.localStorage.setItem(`${storagePrefix}${key}`, JSON.stringify(value));
   },
-  clearToken: () => {
-    window.localStorage.removeItem(`${storagePrefix}token`);
+  removeItem: (key: Storage) => {
+    window.localStorage.removeItem(`${storagePrefix}${key}`);
   },
 };
 
