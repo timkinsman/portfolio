@@ -5,9 +5,14 @@ import { PromiseValue } from 'type-fest';
 
 const queryConfig: DefaultOptions = {
   queries: {
-    useErrorBoundary: true,
+    // useErrorBoundary: true,
     refetchOnWindowFocus: false,
     retry: false,
+    onError(err) {
+      // logger.error(err);
+
+      console.error(err);
+    },
   },
 };
 
