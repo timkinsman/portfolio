@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { Head } from '../Head';
+import { Container, Flex } from '@nayhoo/components';
 
 type ContentLayoutProps = {
   children: React.ReactNode;
@@ -12,9 +13,11 @@ export const ContentLayout = ({ children, title, description }: ContentLayoutPro
   return (
     <>
       <Head title={title} description={description} />
-      <div className="bg-gray-50 dark:bg-gray-950 h-[100vh] flex items-center text-gray-900 dark:text-gray-100">
-        <div className="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">{children}</div>
-      </div>
+      <Flex align="center" className="h-[100vh]">
+        <Container className="px-4 py-12 sm:px-6 lg:py-16 lg:px-8" size="2" css={{ width: '100%' }}>
+          {children}
+        </Container>
+      </Flex>
     </>
   );
 };

@@ -5,30 +5,6 @@
     <link rel="icon" type="image/svg+xml" href="/Favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tim Kinsman</title>
-
-    <script>
-      // TODO: handle messing with localstorage (try catch)
-      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-      const theme = JSON.parse(localStorage.getItem('portfolio_theme'));
-
-      if (
-        theme === 'dark' ||
-        (!('portfolio_theme' in localStorage) &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches)
-      ) {
-        document.documentElement.classList.add('dark');
-
-        if (!('portfolio_theme' in localStorage)) {
-          localStorage.setItem('portfolio_theme', JSON.stringify('dark'));
-        }
-      } else {
-        document.documentElement.classList.remove('dark');
-
-        if (!('portfolio_theme' in localStorage)) {
-          localStorage.setItem('portfolio_theme', JSON.stringify('light'));
-        }
-      }
-    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -1,9 +1,8 @@
-import spotifyMark from '@/assets/icons/spotify-mark.svg';
-import { Link } from '@/components/Elements';
 import { useToken } from '../api/getToken';
 import { useTracks } from '../api/getTracks';
 import { useRecentTracks } from '../api/getRecentTracks';
 import { formatTrack } from '../utils';
+import { Flex, IconButton, Link, Paragraph, Skeleton } from '@nayhoo/components';
 
 const fallbackTrack = {
   artists: [{ name: 'Baths' }],
@@ -31,29 +30,36 @@ export const RecentTrack = () => {
 
   if (token.isLoading || recentTracks.isLoading || tracks.isLoading) {
     return (
-      <div role="status" className="inline-flex gap-2 items-center mt-6 max-w-sm animate-pulse">
-        <div className="h-9 w-9 sm:h-10 sm:w-10 flex items-center justify-center">
-          <div className="h-6 bg-gray-200 rounded-full dark:bg-gray-700 w-6"></div>
-        </div>
-        <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 w-48"></div>
-      </div>
+      <Flex align="center" css={{ mt: '$sizes$3' }} gap="2" role="status">
+        <Skeleton className="h-8 rounded w-8" />
+        <Skeleton className="w-48" />
+      </Flex>
     );
   }
 
   if (!token.data || !recentTracks.data || !tracks.data) return null;
 
   return (
-    <div className="inline-flex gap-2 mt-6 items-center">
-      <a
-        href="https://open.spotify.com/user/31rr7rfdy3rqb5wfsf3ypy6dloby?si=8a2e37caa7c34156"
-        target="_blank"
-        className="text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none rounded-lg text-sm  h-9 w-9 sm:h-10 sm:w-10 flex items-center justify-center"
+    <Flex align="center" css={{ mt: '$sizes$3' }} gap="2">
+      <IconButton
+        onClick={() =>
+          window.open(
+            'https://open.spotify.com/user/31rr7rfdy3rqb5wfsf3ypy6dloby?si=8a2e37caa7c34156',
+            '_blank'
+          )
+        }
+        size="2"
       >
-        <img src={spotifyMark} alt="Spotify logo" className="h-6 w-6 dark:invert" />
-      </a>
-      <Link href={(track ?? fallbackTrack).uri} target="_blank">
-        {formatTrack(track ?? fallbackTrack)}
-      </Link>
-    </div>
+        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+          <path d="M19.098 10.638c-3.868-2.297-10.248-2.508-13.941-1.387-.593.18-1.22-.155-1.399-.748-.18-.593.154-1.22.748-1.4 4.239-1.287 11.285-1.038 15.738 1.605.533.317.708 1.005.392 1.538-.316.533-1.005.709-1.538.392zm-.126 3.403c-.272.44-.847.578-1.287.308-3.225-1.982-8.142-2.557-11.958-1.399-.494.15-1.017-.129-1.167-.623-.149-.495.13-1.016.624-1.167 4.358-1.322 9.776-.682 13.48 1.595.44.27.578.847.308 1.286zm-1.469 3.267c-.215.354-.676.465-1.028.249-2.818-1.722-6.365-2.111-10.542-1.157-.402.092-.803-.16-.895-.562-.092-.403.159-.804.562-.896 4.571-1.045 8.492-.595 11.655 1.338.353.215.464.676.248 1.028zm-5.503-17.308c-6.627 0-12 5.373-12 12 0 6.628 5.373 12 12 12 6.628 0 12-5.372 12-12 0-6.627-5.372-12-12-12z" />
+        </svg>
+      </IconButton>
+
+      <Paragraph>
+        <Link href={(track ?? fallbackTrack).uri} target="_blank">
+          {formatTrack(track ?? fallbackTrack)}
+        </Link>
+      </Paragraph>
+    </Flex>
   );
 };

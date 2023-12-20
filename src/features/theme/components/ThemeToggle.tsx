@@ -1,8 +1,8 @@
 import { useLocalStorage } from 'usehooks-ts';
 import { Storage, storagePrefix } from '@/utils/storage';
 import clsx from 'clsx';
-import { useEffect } from 'react';
-import { updateTheme } from '../utils';
+import { darkTheme, IconButton } from '@nayhoo/components';
+import { useBodyClassToggle } from '@nayhoo/hooks';
 
 export const ThemeToggle = () => {
   const [theme, setTheme] = useLocalStorage<'light' | 'dark'>(
@@ -10,19 +10,12 @@ export const ThemeToggle = () => {
     'dark'
   );
 
-  useEffect(() => {
-    updateTheme(theme);
-  }, [theme]);
-
   const isDarkTheme = theme === 'dark';
 
+  useBodyClassToggle(darkTheme, isDarkTheme);
+
   return (
-    <button
-      id="theme-toggle"
-      type="button"
-      className="text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none rounded-lg text-sm h-9 w-9 sm:h-10 sm:w-10 flex items-center justify-center"
-      onClick={() => setTheme(isDarkTheme ? 'light' : 'dark')}
-    >
+    <IconButton size="2" onClick={() => setTheme(isDarkTheme ? 'light' : 'dark')}>
       <svg
         id="theme-toggle-dark-icon"
         className={clsx('w-5 h-5', { hidden: isDarkTheme })}
@@ -45,6 +38,6 @@ export const ThemeToggle = () => {
           clip-rule="evenodd"
         ></path>
       </svg>
-    </button>
+    </IconButton>
   );
 };
