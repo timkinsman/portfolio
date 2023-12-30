@@ -5,9 +5,8 @@ import { QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { Notifications } from '@/components/Notifications/Notifications';
 import { queryClient } from '@/lib/react-query';
-import { Button, Flex, Heading, Spinner } from '@nayhoo/components';
+import { Button, Flex, Heading, Spinner, Toast } from '@nayhoo/components';
 
 const ErrorFallback = () => {
   return (
@@ -40,11 +39,13 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     >
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <HelmetProvider>
-          <QueryClientProvider client={queryClient}>
-            {process.env.NODE_ENV !== 'test' && <ReactQueryDevtools />}
-            <Notifications />
-            <Router>{children}</Router>
-          </QueryClientProvider>
+          <Toast>
+            <QueryClientProvider client={queryClient}>
+              {process.env.NODE_ENV !== 'test' && <ReactQueryDevtools />}
+
+              <Router>{children}</Router>
+            </QueryClientProvider>
+          </Toast>
         </HelmetProvider>
       </ErrorBoundary>
     </React.Suspense>

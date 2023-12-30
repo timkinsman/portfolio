@@ -17,13 +17,10 @@
     "validate": "npm-run-all --parallel check-types && lint-staged"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.17",
-    "@heroicons/react": "^1.0.6",
-    "@nayhoo/components": "^0.1.1",
+    "@nayhoo/components": "^0.2.0",
     "@nayhoo/hooks": "^0.1.1",
     "axios": "^1.5.0",
     "clsx": "^2.0.0",
-    "nanoid": "^5.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-error-boundary": "^4.0.11",
@@ -32,8 +29,7 @@
     "react-router": "^6.16.0",
     "react-router-dom": "6.0.0-beta.0",
     "type-fest": "^1.4.0",
-    "usehooks-ts": "^2.9.1",
-    "zustand": "^4.4.1"
+    "usehooks-ts": "^2.9.1"
   },
   "devDependencies": {
     "@types/node": "^20.6.3",
