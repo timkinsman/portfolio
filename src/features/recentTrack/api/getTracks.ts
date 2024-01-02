@@ -1,7 +1,6 @@
 import { axios } from '@/lib/axios';
 import { Results } from '../types';
-import { useQuery } from 'react-query';
-import { ExtractFnReturnType, QueryConfig } from '@/lib/react-query';
+import { ExtractFnReturnType, QueryConfig, useQueryWithToast } from '@/lib/react-query';
 
 export const getTracks = ({
   access_token,
@@ -34,9 +33,9 @@ type UseTracksOptions = {
 };
 
 export const useTracks = ({ access_token, artist, config, track }: UseTracksOptions) => {
-  return useQuery<ExtractFnReturnType<QueryFnType>>({
-    queryKey: ['tracks'],
-    queryFn: () => getTracks({ access_token, artist, track }),
-    ...config,
-  });
+  return useQueryWithToast<ExtractFnReturnType<QueryFnType>>(
+    ['tracks'],
+    () => getTracks({ access_token, artist, track }),
+    config
+  );
 };

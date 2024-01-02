@@ -1,7 +1,6 @@
 import { axios } from '@/lib/axios';
 import { SPOTIFY_AUTH } from '@/config';
-import { useQuery } from 'react-query';
-import { ExtractFnReturnType, QueryConfig } from '@/lib/react-query';
+import { ExtractFnReturnType, QueryConfig, useQueryWithToast } from '@/lib/react-query';
 
 export const getToken = (): Promise<{
   access_token: string;
@@ -22,9 +21,5 @@ type useTokenOptions = {
 };
 
 export const useToken = ({ config }: useTokenOptions) => {
-  return useQuery<ExtractFnReturnType<QueryFnType>>({
-    queryKey: ['token'],
-    queryFn: () => getToken(),
-    ...config,
-  });
+  return useQueryWithToast<ExtractFnReturnType<QueryFnType>>(['token'], () => getToken(), config);
 };

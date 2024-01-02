@@ -1,8 +1,7 @@
 import { axios } from '@/lib/axios';
 import { RecentTracks } from '../types';
 import { LAST_FM_API_KEY, LAST_FM_USER } from '@/config';
-import { ExtractFnReturnType, QueryConfig } from '@/lib/react-query';
-import { useQuery } from 'react-query';
+import { ExtractFnReturnType, QueryConfig, useQueryWithToast } from '@/lib/react-query';
 
 export const getRecentTracks = (): Promise<RecentTracks> => {
   return axios.get(`https://ws.audioscrobbler.com/2.0`, {
@@ -24,9 +23,9 @@ type UseRecentTracksOptions = {
 };
 
 export const useRecentTracks = ({ config }: UseRecentTracksOptions) => {
-  return useQuery<ExtractFnReturnType<QueryFnType>>({
-    queryKey: ['recentTracks'],
-    queryFn: () => getRecentTracks(),
-    ...config,
-  });
+  return useQueryWithToast<ExtractFnReturnType<QueryFnType>>(
+    ['recentTracks'],
+    () => getRecentTracks(),
+    config
+  );
 };

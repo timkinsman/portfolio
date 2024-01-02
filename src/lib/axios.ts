@@ -1,7 +1,5 @@
 import Axios from 'axios';
 
-import { useNotificationStore } from '@/stores/notifications';
-
 export const axios = Axios.create();
 
 axios.interceptors.response.use(
@@ -9,13 +7,6 @@ axios.interceptors.response.use(
     return response.data;
   },
   (error) => {
-    const message = error.response?.data?.message || error.message;
-    useNotificationStore.getState().addNotification({
-      type: 'error',
-      title: 'Error',
-      message,
-    });
-
     return Promise.reject(error);
   }
 );
