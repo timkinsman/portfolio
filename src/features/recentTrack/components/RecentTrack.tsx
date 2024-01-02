@@ -2,16 +2,7 @@ import { useToken } from '../api/getToken';
 import { useTracks } from '../api/getTracks';
 import { useRecentTracks } from '../api/getRecentTracks';
 import { formatTrack } from '../utils';
-import {
-  Flex,
-  IconButton,
-  Link,
-  Paragraph,
-  Skeleton,
-  useToast,
-  ToastAction,
-  Button,
-} from '@nayhoo/components';
+import { Flex, IconButton, Link, Paragraph, Skeleton } from '@nayhoo/components';
 
 const fallbackTrack = {
   artists: [{ name: 'Baths' }],
@@ -20,44 +11,9 @@ const fallbackTrack = {
 };
 
 export const RecentTrack = () => {
-  const toast = useToast();
+  const token = useToken({});
 
-  const token = useToken({
-    config: {
-      onError(err) {
-        // TODO: do this on a higher level
-        toast({
-          title: 'Error',
-          description: `${err}`,
-          action: (
-            <ToastAction altText="Dismiss error" asChild>
-              <Button size="1" variant="outline">
-                Dismiss
-              </Button>
-            </ToastAction>
-          ),
-        });
-      },
-    },
-  });
-
-  const recentTracks = useRecentTracks({
-    config: {
-      onError(err) {
-        toast({
-          title: 'Error',
-          description: `${err}`,
-          action: (
-            <ToastAction altText="Dismiss error" asChild>
-              <Button size="1" variant="outline">
-                Dismiss
-              </Button>
-            </ToastAction>
-          ),
-        });
-      },
-    },
-  });
+  const recentTracks = useRecentTracks({});
 
   const access_token = token.data?.access_token;
   const recentTrack = recentTracks.data?.recenttracks.track[0];
@@ -67,19 +23,6 @@ export const RecentTrack = () => {
     artist: recentTrack?.artist['#text'] ?? '',
     config: {
       enabled: !!access_token && !!recentTrack?.artist['#text'] && !!recentTrack?.name,
-      onError(err) {
-        toast({
-          title: 'Error',
-          description: `${err}`,
-          action: (
-            <ToastAction altText="Dismiss error" asChild>
-              <Button size="1" variant="outline">
-                Dismiss
-              </Button>
-            </ToastAction>
-          ),
-        });
-      },
     },
     track: recentTrack?.name ?? '',
   });

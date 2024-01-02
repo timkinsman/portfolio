@@ -6,9 +6,12 @@ settings:
 
 dependencies:
   '@nayhoo/components':
-    specifier: ^0.2.0
-    version: 0.2.0(@types/react-dom@18.2.8)(@types/react@18.2.24)(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^0.2.1
+    version: 0.2.1(@types/react-dom@18.2.8)(@types/react@18.2.24)(react-dom@18.2.0)(react@18.2.0)
   '@nayhoo/hooks':
+    specifier: ^0.1.1
+    version: 0.1.1
+  '@nayhoo/utils':
     specifier: ^0.1.1
     version: 0.1.1
   axios:
@@ -657,12 +660,12 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /@nayhoo/components@0.2.0(@types/react-dom@18.2.8)(@types/react@18.2.24)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-YYyL9Z4bQzGSv87Q+bJvl8c+T2E/iGeWPnp4NCHNxhe0WET97N8IobuALY49wvX4NgqkjFHoz/og/fiX4URfvQ==}
+  /@nayhoo/components@0.2.1(@types/react-dom@18.2.8)(@types/react@18.2.24)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-LhzOrOpgFUItg6cVbpeXyCC56kkKZwGJ1g4yIiLm/kPmElwuKPsPcICRS5w/L47mh0m4t53iPlgHqhX6m7Tzuw==}
     peerDependencies:
       react: ~18.2.0
     dependencies:
-      '@nayhoo/utils': 0.1.0
+      '@nayhoo/utils': 0.1.1
       '@radix-ui/react-accordion': 1.1.2(@types/react-dom@18.2.8)(@types/react@18.2.24)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-aspect-ratio': 1.0.3(@types/react-dom@18.2.8)(@types/react@18.2.24)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-avatar': 1.0.4(@types/react-dom@18.2.8)(@types/react@18.2.24)(react-dom@18.2.0)(react@18.2.0)
@@ -690,12 +693,12 @@ packages:
   /@nayhoo/hooks@0.1.1:
     resolution: {integrity: sha512-5IMHUyQJYmtFNKvaW27pPMC6ICiiU/jzche2Pc9lcySkgMDIYHbLjrOcr6XvhNPzZ1iY8uzlrwioIm+oihxu7g==}
     dependencies:
-      '@nayhoo/utils': 0.1.0
+      '@nayhoo/utils': 0.1.1
       react: 18.2.0
     dev: false
 
-  /@nayhoo/utils@0.1.0:
-    resolution: {integrity: sha512-u9paFi6sx7wGboy8qMPm+YwQhoUGCgWdgZ2nmMF01il0Sjn0bggWdKdkB/KSzuplS+25pzkoiRM++FBt6Tia6A==}
+  /@nayhoo/utils@0.1.1:
+    resolution: {integrity: sha512-kLsbW+KIkC3l78CQCVnClM0Zv9UMk5tYl7WjBfWR+qSjhubr8crtSy/41LdJwDDihZ2FF0STxlAYr5GrHR51Mw==}
     dev: false
 
   /@nodelib/fs.scandir@2.1.5:
