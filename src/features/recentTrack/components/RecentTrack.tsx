@@ -12,6 +12,7 @@ const fallbackTrack = {
 
 export const RecentTrack = () => {
   const token = useToken({});
+
   const recentTracks = useRecentTracks({});
 
   const access_token = token.data?.access_token;
