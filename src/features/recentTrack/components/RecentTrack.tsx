@@ -2,13 +2,19 @@ import { useToken } from '../api/getToken';
 import { useTracks } from '../api/getTracks';
 import { useRecentTracks } from '../api/getRecentTracks';
 import { formatTrack } from '../utils';
-import { Flex, IconButton, Link, Paragraph, Skeleton } from '@nayhoo/components';
+import { Flex, IconButton, Link, Paragraph, Skeleton, styled } from '@nayhoo/components';
 
 const fallbackTrack = {
   artists: [{ name: 'Baths' }],
   name: 'Sunspell',
   uri: 'https://open.spotify.com/track/1nM9Jgm0oInPG0yKtcEQD0?si=a901014dfe37479a',
 };
+
+// TODO: Make this a Skeleton variant (iconButton)
+const StyledSkeleton = styled(Skeleton, {
+  borderRadius: '$2 !important',
+  size: '$6 !important',
+});
 
 export const RecentTrack = () => {
   const token = useToken({});
@@ -32,13 +38,11 @@ export const RecentTrack = () => {
   if (token.isLoading || recentTracks.isLoading || tracks.isLoading) {
     return (
       <Flex align="center" css={{ mt: '$sizes$3' }} gap="2" role="status">
-        <Skeleton className="h-8 rounded w-8" />
+        <StyledSkeleton />
         <Skeleton className="w-48" />
       </Flex>
     );
   }
-
-  if (!token.data || !recentTracks.data || !tracks.data) return null;
 
   return (
     <Flex align="center" css={{ mt: '$sizes$3' }} gap="2">
