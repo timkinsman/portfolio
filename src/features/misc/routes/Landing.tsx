@@ -1,5 +1,6 @@
 import avatar from '@/assets/images/avatar.jpg';
 import { ContentLayout } from '@/components/Layout';
+import { CV_GOOGLE_DRIVE_LINK } from '@/config';
 import { RecentTrack } from '@/features/recentTrack';
 import { ThemeToggle } from '@/features/theme';
 import { Avatar, Flex, Heading, IconButton, Link, Paragraph, Tooltip } from '@nayhoo/components';
@@ -62,7 +63,7 @@ export const Landing = () => {
         </Link>{' '}
         intended for personal use.{' '}
         <Link
-          href="https://drive.google.com/file/d/1ZREsWjWJna2h76BrZoMFCW5ADpcxIpfd/view?usp=sharing"
+          href={CV_GOOGLE_DRIVE_LINK}
           target="_blank"
         >
           CV
