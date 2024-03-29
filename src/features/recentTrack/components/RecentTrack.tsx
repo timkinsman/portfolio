@@ -37,7 +37,7 @@ export const RecentTrack = () => {
 
   if (token.isLoading || recentTracks.isLoading || tracks.isLoading) {
     return (
-      <Flex align="center" css={{ mt: '$sizes$3' }} gap="2" role="status">
+      <Flex align="center" gap="2" role="status">
         <StyledSkeleton />
         <Skeleton className="w-48" />
       </Flex>
