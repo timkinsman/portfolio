@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-const SIZE = 1440;
+const SIZE = window.innerWidth;
 
 /**
  * @author https://codesandbox.io/p/sandbox/framer-motion-mouse-position-2b4sd?file=%2Fsrc%2FApp.js%3A78%2C5-86%2C6
@@ -68,14 +68,14 @@ export const CustomCursor = () => {
         }}
         transition={{ type: 'spring' }}
       />
-      <motion.div
+      {/* <motion.div
         style={style}
         animate={{
           x: gradientPosition.x - SIZE / 2,
           y: gradientPosition.y - SIZE / 2,
         }}
         transition={{ type: 'tween' }}
-      />
+      /> */}
     </>
   );
 };

@@ -27,13 +27,13 @@ export const Landing = () => {
   const isDarkTheme = theme === 'dark';
   const transparentBackground = `${
     isDarkTheme ? darkTheme.colors.background.value : lightTheme.colors.background.value
-  }73`;
+  }23`; // 35% opacity?
 
   const transparentPanelStyles = { background: transparentBackground, borderRadius: '32px' };
 
   return (
     <ContentLayout description="React front-end developer based in Adelaide">
-      <Flex gap="3" direction="column">
+      <Flex gap="2" direction="column">
         <Flex align="center" gap="3" justify="between" wrap="wrap">
           <Flex align="center" gap="3" css={{ p: '$3', ...transparentPanelStyles }}>
             <Tooltip content="🤡">
@@ -67,7 +67,7 @@ export const Landing = () => {
           </Flex>
         </Flex>
 
-        <Box css={{ p: '$3', background: transparentBackground, borderRadius: '32px' }}>
+        <Box css={{ p: '$3', ...transparentPanelStyles }}>
           <Paragraph>Hi! I'm a React front-end developer based in Adelaide.</Paragraph>
 
           <Paragraph css={{ mt: '$sizes$3' }}>
@@ -121,7 +121,7 @@ export const Landing = () => {
 
         <Box
           css={{
-            p: '$4',
+            p: '$3',
             width: 'fit-content',
             ...transparentPanelStyles,
           }}
