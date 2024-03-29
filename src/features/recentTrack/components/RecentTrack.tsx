@@ -45,7 +45,7 @@ export const RecentTrack = () => {
   }
 
   return (
-    <Flex align="center" css={{ mt: '$sizes$3' }} gap="2">
+    <Flex align="center" gap="2">
       <IconButton
         onClick={() =>
           window.open(
@@ -61,7 +61,7 @@ export const RecentTrack = () => {
       </IconButton>
 
       <Paragraph>
-        <Link href={(track ?? fallbackTrack).uri} target="_blank">
+        <Link css={{ color: '#0000ee' }} href={(track ?? fallbackTrack).uri} target="_blank">
           {formatTrack(track ?? fallbackTrack)}
         </Link>
       </Paragraph>

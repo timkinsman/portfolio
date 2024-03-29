@@ -1,15 +1,13 @@
-import { useLocalStorage } from 'usehooks-ts';
-import { Storage, storagePrefix } from '@/utils/storage';
 import clsx from 'clsx';
 import { darkTheme, IconButton } from '@nayhoo/components';
 import { useBodyClassToggle } from '@nayhoo/hooks';
 
-export const ThemeToggle = () => {
-  const [theme, setTheme] = useLocalStorage<'light' | 'dark'>(
-    `${storagePrefix}${Storage.theme}`,
-    'dark'
-  );
+type ThemeToggleProps = {
+  theme: 'light' | 'dark';
+  setTheme: React.Dispatch<React.SetStateAction<'light' | 'dark'>>;
+};
 
+export const ThemeToggle = ({ theme, setTheme }: ThemeToggleProps) => {
   const isDarkTheme = theme === 'dark';
 
   useBodyClassToggle(darkTheme, isDarkTheme);
