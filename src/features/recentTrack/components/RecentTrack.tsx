@@ -61,7 +61,7 @@ export const RecentTrack = () => {
       </IconButton>
 
       <Paragraph>
-        <Link css={{ color: '#0000ee' }} href={(track ?? fallbackTrack).uri} target="_blank">
+        <Link color='secondary' href={(track ?? fallbackTrack).uri} target="_blank">
           {formatTrack(track ?? fallbackTrack)}
         </Link>
       </Paragraph>

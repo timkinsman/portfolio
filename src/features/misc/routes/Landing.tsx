@@ -25,17 +25,17 @@ export const Landing = () => {
   );
 
   const isDarkTheme = theme === 'dark';
-  const transparentBackground = `${isDarkTheme ? darkTheme.colors.background.value : lightTheme.colors.background.value}73`;
+  const transparentBackground = `${
+    isDarkTheme ? darkTheme.colors.background.value : lightTheme.colors.background.value
+  }73`;
+
+  const transparentPanelStyles = { background: transparentBackground, borderRadius: '32px' };
 
   return (
     <ContentLayout description="React front-end developer based in Adelaide">
       <Flex gap="3" direction="column">
         <Flex align="center" gap="3" justify="between" wrap="wrap">
-          <Flex
-            align="center"
-            gap="3"
-            css={{ p: '$4', background: transparentBackground, borderRadius: '32px' }}
-          >
+          <Flex align="center" gap="3" css={{ p: '$3', ...transparentPanelStyles }}>
             <Tooltip content="🤡">
               <Avatar fallback="T" interactive size="4" src={avatar} />
             </Tooltip>
@@ -47,7 +47,7 @@ export const Landing = () => {
             </Flex>
           </Flex>
 
-          <Flex gap="2" css={{ p: '$4', background: transparentBackground, borderRadius: '32px' }}>
+          <Flex gap="2" css={{ p: '$3', ...transparentPanelStyles }}>
             <IconButton
               onClick={() => window.open('https://github.com/timkinsman', '_blank')}
               size="2"
@@ -67,36 +67,32 @@ export const Landing = () => {
           </Flex>
         </Flex>
 
-        <Box css={{ p: '$4', background: transparentBackground, borderRadius: '32px' }}>
+        <Box css={{ p: '$3', background: transparentBackground, borderRadius: '32px' }}>
           <Paragraph>Hi! I'm a React front-end developer based in Adelaide.</Paragraph>
 
           <Paragraph css={{ mt: '$sizes$3' }}>
             I work at{' '}
-            <Link css={{ color: '#0000ee' }} href="https://www.eatclub.com.au/" target="_blank">
+            <Link color="secondary" href="https://www.eatclub.com.au/" target="_blank">
               EatClub
             </Link>{' '}
             and on a number of projects, including{' '}
-            <Link
-              css={{ color: '#0000ee' }}
-              href="https://www.github.com/nayhoo/ui"
-              target="_blank"
-            >
+            <Link color="secondary" href="https://www.github.com/nayhoo/ui" target="_blank">
               Nayhoo
             </Link>
             , a collection of{' '}
-            <Link css={{ color: '#0000ee' }} href="https://react.dev/" target="_blank">
+            <Link color="secondary" href="https://react.dev/" target="_blank">
               React
             </Link>{' '}
             hooks, utils and components built with{' '}
-            <Link css={{ color: '#0000ee' }} href="https://www.radix-ui.com/" target="_blank">
+            <Link color="secondary" href="https://www.radix-ui.com/" target="_blank">
               Radix UI
             </Link>{' '}
             and{' '}
-            <Link css={{ color: '#0000ee' }} href="https://stitches.dev/" target="_blank">
+            <Link color="secondary" href="https://stitches.dev/" target="_blank">
               Stitches
             </Link>{' '}
             intended for personal use.{' '}
-            <Link css={{ color: '#0000ee' }} href={CV_GOOGLE_DRIVE_LINK} target="_blank">
+            <Link color="secondary" href={CV_GOOGLE_DRIVE_LINK} target="_blank">
               CV
             </Link>
             .
@@ -104,23 +100,19 @@ export const Landing = () => {
 
           <Paragraph css={{ mt: '$sizes$3' }}>
             You can contact me through{' '}
-            <Link
-              css={{ color: '#0000ee' }}
+            {/* <Link
+              color="secondary"
               href="https://discordapp.com/users/355321462032171009/"
               target="_blank"
             >
               Discord
             </Link>
-            ,{' '}
-            <Link
-              css={{ color: '#0000ee' }}
-              href="https://www.linkedin.com/in/timkinsman"
-              target="_blank"
-            >
+            ,{' '} */}
+            <Link color="secondary" href="https://www.linkedin.com/in/timkinsman" target="_blank">
               LinkedIn
             </Link>{' '}
             or at{' '}
-            <Link css={{ color: '#0000ee' }} href="mailto:tkinsm@gmail.com" target="_blank">
+            <Link color="secondary" href="mailto:tkinsm@gmail.com" target="_blank">
               tkinsm@gmail.com
             </Link>
             .
@@ -130,9 +122,8 @@ export const Landing = () => {
         <Box
           css={{
             p: '$4',
-            background: transparentBackground,
-            borderRadius: '32px',
             width: 'fit-content',
+            ...transparentPanelStyles,
           }}
         >
           <RecentTrack />

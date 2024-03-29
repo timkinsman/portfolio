@@ -7,6 +7,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import { queryClient } from '@/lib/react-query';
 import { Button, Flex, Heading, Spinner, Toast } from '@nayhoo/components';
+import { CustomCursor } from '@/components/CustomCursor';
 
 const ErrorFallback = () => {
   return (
@@ -43,7 +44,9 @@ export const AppProvider = ({ children }: AppProviderProps) => {
             <QueryClientProvider client={queryClient}>
               {process.env.NODE_ENV !== 'test' && <ReactQueryDevtools />}
 
+              <CustomCursor />
               <Router>{children}</Router>
+
             </QueryClientProvider>
           </Toast>
         </HelmetProvider>

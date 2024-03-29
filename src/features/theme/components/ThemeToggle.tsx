@@ -1,6 +1,7 @@
 import clsx from 'clsx';
-import { darkTheme, IconButton } from '@nayhoo/components';
+import { createTheme, IconButton } from '@nayhoo/components';
 import { useBodyClassToggle } from '@nayhoo/hooks';
+import Theme from '@/utils/theme';
 
 type ThemeToggleProps = {
   theme: 'light' | 'dark';
@@ -10,7 +11,11 @@ type ThemeToggleProps = {
 export const ThemeToggle = ({ theme, setTheme }: ThemeToggleProps) => {
   const isDarkTheme = theme === 'dark';
 
-  useBodyClassToggle(darkTheme, isDarkTheme);
+  const customLightTheme = createTheme('light', { colors: { secondary: '#0000ee' } });
+  const customDarkTheme = createTheme('dark', Theme.darkTheme);
+
+  useBodyClassToggle(customLightTheme, !isDarkTheme);
+  useBodyClassToggle(customDarkTheme, isDarkTheme);
 
   return (
     <IconButton size="2" onClick={() => setTheme(isDarkTheme ? 'light' : 'dark')}>
