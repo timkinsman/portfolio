@@ -45,21 +45,26 @@ export const CustomCursor = () => {
     width: SIZE,
     height: SIZE,
     borderRadius: '100%',
-    filter: `blur(${SIZE / 10}px)`,
-    background: 'linear-gradient(#ed5b72, #f5873b)',
+    filter: `blur(${SIZE / 20}px)`,
+    /** https://cssgradient.io/ */
+    background: 'rgb(237,91,114)',
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    background:
+      'radial-gradient(circle, rgba(237,91,114,1) 0%, rgba(245,135,59,1) 65%, rgba(249,160,27,1) 100%',
     opacity: 0.4,
     zIndex: -1,
   };
 
   return (
     <>
-      <motion.div
+      {/* <motion.div
         style={style}
         animate={{
           x: gradientPosition.x - SIZE / 2,
           y: gradientPosition.y - SIZE / 2,
         }}
-      />
+      /> */}
       <motion.div
         style={style}
         animate={{

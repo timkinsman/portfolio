@@ -34,12 +34,12 @@ export const Landing = () => {
   return (
     <ContentLayout description="React front-end developer based in Adelaide">
       <Flex gap="2" direction="column">
-        <Flex align="center" gap="3" justify="between" wrap="wrap">
-          <Flex align="center" gap="3" css={{ p: '$3', ...transparentPanelStyles }}>
+        <Flex align="center" gap="2" justify="between" wrap="wrap">
+          <Flex align="center" gap="2" css={{ p: '$3', ...transparentPanelStyles }}>
             <Tooltip content="🤡">
               <Avatar fallback="T" interactive size="4" src={avatar} />
             </Tooltip>
-            <Flex align="baseline" gap="3">
+            <Flex align="baseline" gap="2">
               <Heading size="3">Tim Kinsman</Heading>
               {/* <Link>Home</Link> */}
               {/* <Link>Projects</Link> */}
