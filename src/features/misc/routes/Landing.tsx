@@ -39,13 +39,14 @@ export const Landing = () => {
             <Tooltip content="🤡">
               <Avatar fallback="T" interactive size="4" src={avatar} />
             </Tooltip>
-            <Flex align="baseline" gap="2">
-              <Heading size="3">Tim Kinsman</Heading>
-              {/* <Link>Home</Link> */}
-              {/* <Link>Projects</Link> */}
-              {/* <Link>Music</Link> */}
-            </Flex>
+            <Heading size="3">Tim Kinsman</Heading>
           </Flex>
+
+          {/* <Flex align="center" gap="2" css={{ p: '$3', ...transparentPanelStyles }}>
+            <Link>Home</Link>
+            <Link>Projects</Link>
+            <Link>Music</Link>
+          </Flex> */}
 
           <Flex gap="2" css={{ p: '$3', ...transparentPanelStyles }}>
             <IconButton
