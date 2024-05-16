@@ -12,7 +12,7 @@ const ErrorFallback = () => {
   return (
     <Flex
       align="center"
-      className="w-screen h-[100dvh]"
+      className="w-screen h-screen"
       direction="column"
       gap="4"
       justify="center"
@@ -32,7 +32,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   return (
     <React.Suspense
       fallback={
-        <Flex align="center" className="w-screen h-[100dvh]" justify="center">
+        <Flex align="center" className="w-screen h-screen" justify="center">
           <Spinner />
         </Flex>
       }
