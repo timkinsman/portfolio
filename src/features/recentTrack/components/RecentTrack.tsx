@@ -12,8 +12,8 @@ const fallbackTrack = {
 
 // TODO: Make this a Skeleton variant (iconButton)
 const StyledSkeleton = styled(Skeleton, {
-  borderRadius: '$2 !important',
-  size: '$6 !important',
+  borderRadius: '$xl !important',
+  size: '$8 !important',
 });
 
 export const RecentTrack = () => {
@@ -39,7 +39,7 @@ export const RecentTrack = () => {
     return (
       <Flex align="center" gap="2" role="status">
         <StyledSkeleton />
-        <Skeleton className="w-48" />
+        <Skeleton css={{ width: '12rem' }} />
       </Flex>
     );
   }
@@ -61,7 +61,7 @@ export const RecentTrack = () => {
       </IconButton>
 
       <Paragraph>
-        <Link color='secondary' href={(track ?? fallbackTrack).uri} target="_blank">
+        <Link color="secondary" href={(track ?? fallbackTrack).uri} target="_blank">
           {formatTrack(track ?? fallbackTrack)}
         </Link>
       </Paragraph>

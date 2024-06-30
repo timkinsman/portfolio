@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import { IconButton } from '@nayhoo/components';
 import { useBodyClassToggle } from '@nayhoo/hooks';
 import { customDarkTheme, customLightTheme } from '@/lib/nayhoo';
@@ -18,7 +17,9 @@ export const ThemeToggle = ({ theme, setTheme }: ThemeToggleProps) => {
     <IconButton size="2" onClick={() => setTheme(isDarkTheme ? 'light' : 'dark')}>
       <svg
         id="theme-toggle-dark-icon"
-        className={clsx('w-5 h-5', { hidden: isDarkTheme })}
+        style={{ display: isDarkTheme ? 'none' : 'block' }}
+        height={24}
+        width={24}
         fill="currentColor"
         viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +28,9 @@ export const ThemeToggle = ({ theme, setTheme }: ThemeToggleProps) => {
       </svg>
       <svg
         id="theme-toggle-light-icon"
-        className={clsx('w-5 h-5', { hidden: !isDarkTheme })}
+        style={{ display: !isDarkTheme ? 'none' : 'block' }}
+        height={24}
+        width={24}
         fill="currentColor"
         viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"
