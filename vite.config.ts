@@ -2,6 +2,7 @@ import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import { VitePluginRadar } from 'vite-plugin-radar';
+import svgr from 'vite-plugin-svgr';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -16,6 +17,7 @@ export default defineConfig(({ mode }) => {
         // Google Tag Manager (multiple tag can be set with an array)
         gtm: [{ id: env.VITE_GTM_ID }],
       }),
+      svgr(),
     ],
     server: {
       open: true,
