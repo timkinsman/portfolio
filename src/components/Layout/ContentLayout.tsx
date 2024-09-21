@@ -14,7 +14,7 @@ export const ContentLayout = ({ children, title, description }: ContentLayoutPro
     <>
       <Head title={title} description={description} />
       <Flex align="center" className="h-screen">
-        <Container size="3" css={{ width: '100%', padding: '1rem' }}>
+        <Container size="2" css={{ width: '100%', padding: '1rem' }}>
           {children}
         </Container>
       </Flex>

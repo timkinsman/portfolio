@@ -1,4 +1,4 @@
-import Timy from '@/assets/images/timy.svg?react';
+// import Timy from '@/assets/images/timy.svg?react';
 import { FadeInSection } from '@/components/FadeInSection';
 import { ContentLayout } from '@/components/Layout';
 import { CV_GOOGLE_DRIVE_LINK } from '@/config';
@@ -17,7 +17,7 @@ export const Landing = () => {
   return (
     <ContentLayout description="React front-end developer based in Adelaide">
       <Flex align="center" gap="6">
-        <FadeInSection
+        {/* <FadeInSection
           css={{
             display: 'none',
             '@bp2': {
@@ -27,9 +27,9 @@ export const Landing = () => {
             flexShrink: 0,
             height: '277px',
           }}
-        >
-          <Timy style={{ height: '100%' }} />
-        </FadeInSection>
+        > */}
+          {/* <Timy style={{ height: '100%' }} /> */}
+        {/* </FadeInSection> */}
 
         <FadeInSection>
           <Flex gap="6" direction="column">
