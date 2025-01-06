@@ -23,9 +23,6 @@ importers:
       axios:
         specifier: ^1.5.0
         version: 1.5.1
-      framer-motion:
-        specifier: ^8.1.7
-        version: 8.5.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react:
         specifier: ~18.2.0
         version: 18.2.0
@@ -236,12 +233,6 @@ packages:
     resolution: {integrity: sha512-0oIyUfKoI3mSqMvsxBdclDwxXKXAUA8v/apZbc+iSyARYou1o8ZGDxbUYyLFoW2arqS2jDGqJuZvv1d/io1axg==}
     engines: {node: '>=6.9.0'}
 
-  '@emotion/is-prop-valid@0.8.8':
-    resolution: {integrity: sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==, tarball: https://registry.npmjs.org/@emotion/is-prop-valid/-/is-prop-valid-0.8.8.tgz}
-
-  '@emotion/memoize@0.7.4':
-    resolution: {integrity: sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==}
-
   '@esbuild/android-arm64@0.18.20':
     resolution: {integrity: sha512-Nz4rJcchGDtENV0eMKUNa6L12zz2zBDXuhj/Vjh18zGqB44Bi7MBMSXjgunJgjRhCmKOjnPuZp4Mb6OKqtMHLQ==, tarball: https://registry.npmjs.org/@esbuild/android-arm64/-/android-arm64-0.18.20.tgz}
     engines: {node: '>=12'}
@@ -440,24 +431,6 @@ packages:
     resolution: {integrity: sha512-cEIpepR1/BJYQey2lbzPhy342ZR/JmkChXKS+bOQkGLg1F17n45Zf650W67sBKMvF63effNVT0iUF3Fi3D7yPQ==, tarball: https://registry.npmjs.org/@lukehagar/plexjs/-/plexjs-0.32.1.tgz}
     peerDependencies:
       zod: '>= 3'
-
-  '@motionone/animation@10.17.0':
-    resolution: {integrity: sha512-ANfIN9+iq1kGgsZxs+Nz96uiNcPLGTXwfNo2Xz/fcJXniPYpaz/Uyrfa+7I5BPLxCP82sh7quVDudf1GABqHbg==}
-
-  '@motionone/dom@10.17.0':
-    resolution: {integrity: sha512-cMm33swRlCX/qOPHWGbIlCl0K9Uwi6X5RiL8Ma6OrlJ/TP7Q+Np5GE4xcZkFptysFjMTi4zcZzpnNQGQ5D6M0Q==}
-
-  '@motionone/easing@10.17.0':
-    resolution: {integrity: sha512-Bxe2wSuLu/qxqW4rBFS5m9tMLOw+QBh8v5A7Z5k4Ul4sTj5jAOfZG5R0bn5ywmk+Fs92Ij1feZ5pmC4TeXA8Tg==}
-
-  '@motionone/generators@10.17.0':
-    resolution: {integrity: sha512-T6Uo5bDHrZWhIfxG/2Aut7qyWQyJIWehk6OB4qNvr/jwA/SRmixwbd7SOrxZi1z5rH3LIeFFBKK1xHnSbGPZSQ==}
-
-  '@motionone/types@10.17.0':
-    resolution: {integrity: sha512-EgeeqOZVdRUTEHq95Z3t8Rsirc7chN5xFAPMYFobx8TPubkEfRSm5xihmMUkbaR2ErKJTUw3347QDPTHIW12IA==}
-
-  '@motionone/utils@10.17.0':
-    resolution: {integrity: sha512-bGwrki4896apMWIj9yp5rAS2m0xyhxblg6gTB/leWDPt+pb410W8lYWsxyurX+DH+gO1zsQsfx2su/c1/LtTpg==}
 
   '@nayhoo/components@0.3.3':
     resolution: {integrity: sha512-ICWdBg+oSYQameiFKPj6Xbv08yKaWVnSrgKWEG7wqfc8WKcYX0BElmJKczVslgeDk8BmqiBvLqTpN1gjPs76yg==, tarball: https://registry.npmjs.org/@nayhoo/components/-/components-0.3.3.tgz}
@@ -1546,12 +1519,6 @@ packages:
   fraction.js@4.3.6:
     resolution: {integrity: sha512-n2aZ9tNfYDwaHhvFTkhFErqOMIb8uyzSQ+vGJBjZyanAKZVbGUQ1sngfk9FdkBw7G26O7AgNjLcecLffD1c7eg==}
 
-  framer-motion@8.5.5:
-    resolution: {integrity: sha512-5IDx5bxkjWHWUF3CVJoSyUVOtrbAxtzYBBowRE2uYI/6VYhkEBD+rbTHEGuUmbGHRj6YqqSfoG7Aa1cLyWCrBA==}
-    peerDependencies:
-      react: ^18.0.0
-      react-dom: ^18.0.0
-
   fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
 
@@ -1657,9 +1624,6 @@ packages:
   has@1.0.3:
     resolution: {integrity: sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==}
     engines: {node: '>= 0.4.0'}
-
-  hey-listen@1.0.8:
-    resolution: {integrity: sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q==}
 
   history@5.3.0:
     resolution: {integrity: sha512-ZqaKwjjrAYUYfLG+htGaIIZ4nioX2L70ZUMIFysS3xvBsSG4x/n1V6TXV3N8ZYNuFGlDirFg32T7B6WOUPDYcQ==, tarball: https://registry.npmjs.org/history/-/history-5.3.0.tgz}
@@ -2787,14 +2751,6 @@ snapshots:
       '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
 
-  '@emotion/is-prop-valid@0.8.8':
-    dependencies:
-      '@emotion/memoize': 0.7.4
-    optional: true
-
-  '@emotion/memoize@0.7.4':
-    optional: true
-
   '@esbuild/android-arm64@0.18.20':
     optional: true
 
@@ -2933,41 +2889,6 @@ snapshots:
   '@lukehagar/plexjs@0.32.1(zod@3.24.1)':
     dependencies:
       zod: 3.24.1
-
-  '@motionone/animation@10.17.0':
-    dependencies:
-      '@motionone/easing': 10.17.0
-      '@motionone/types': 10.17.0
-      '@motionone/utils': 10.17.0
-      tslib: 2.6.2
-
-  '@motionone/dom@10.17.0':
-    dependencies:
-      '@motionone/animation': 10.17.0
-      '@motionone/generators': 10.17.0
-      '@motionone/types': 10.17.0
-      '@motionone/utils': 10.17.0
-      hey-listen: 1.0.8
-      tslib: 2.6.2
-
-  '@motionone/easing@10.17.0':
-    dependencies:
-      '@motionone/utils': 10.17.0
-      tslib: 2.6.2
-
-  '@motionone/generators@10.17.0':
-    dependencies:
-      '@motionone/types': 10.17.0
-      '@motionone/utils': 10.17.0
-      tslib: 2.6.2
-
-  '@motionone/types@10.17.0': {}
-
-  '@motionone/utils@10.17.0':
-    dependencies:
-      '@motionone/types': 10.17.0
-      hey-listen: 1.0.8
-      tslib: 2.6.2
 
   '@nayhoo/components@0.3.3(@types/react-dom@18.2.8)(@types/react@18.2.24)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
     dependencies:
@@ -4265,16 +4186,6 @@ snapshots:
 
   fraction.js@4.3.6: {}
 
-  framer-motion@8.5.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
-    dependencies:
-      '@motionone/dom': 10.17.0
-      hey-listen: 1.0.8
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      tslib: 2.6.2
-    optionalDependencies:
-      '@emotion/is-prop-valid': 0.8.8
-
   fs.realpath@1.0.0: {}
 
   fsevents@2.3.3:
@@ -4383,8 +4294,6 @@ snapshots:
   has@1.0.3:
     dependencies:
       function-bind: 1.1.1
-
-  hey-listen@1.0.8: {}
 
   history@5.3.0:
     dependencies:
