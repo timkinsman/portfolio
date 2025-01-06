@@ -37,3 +37,8 @@ code {
   animation-timing-function: linear;
 }
 
+.h-screen {
+  /* fallback for Opera, IE and etc. */
+  height: 100vh;
+  height: 100dvh;
+}
