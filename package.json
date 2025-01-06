@@ -1,5 +1,5 @@
 {
-  "name": "vite-template",
+  "name": "portfolio",
   "private": true,
   "version": "0.8.3",
   "type": "module",
@@ -48,8 +48,7 @@
     "prettier": "3.0.3",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
-    "vite-plugin-radar": "^0.9.3",
-    "vite-plugin-svgr": "^4.2.0"
+    "vite-plugin-radar": "^0.9.3"
   },
   "lint-staged": {
     "*.+(ts|tsx)": [
