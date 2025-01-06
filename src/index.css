@@ -4,8 +4,8 @@
 
 body {
   margin: 0;
-  font-family: 'Open Sauce', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-    'Helvetica Neue', sans-serif;
+  font-family: 'Open Sauce', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -16,5 +16,24 @@ code {
 
 @font-face {
   font-family: 'Open Sauce';
-  src: local('Open Sauce'), url(./assets/fonts/OpenSauceOne-Regular.ttf) format('truetype');
+  src:
+    local('Open Sauce'),
+    url(./assets/fonts/OpenSauceOne-Regular.ttf) format('truetype');
 }
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#cd {
+  animation-name: spin;
+  animation-duration: 2500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+

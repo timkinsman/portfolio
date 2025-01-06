@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@lukehagar/plexjs':
+        specifier: ^0.32.1
+        version: 0.32.1(zod@3.24.1)
       '@nayhoo/components':
         specifier: ^0.3.3
         version: 0.3.3(@types/react-dom@18.2.8)(@types/react@18.2.24)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -432,6 +435,11 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.19':
     resolution: {integrity: sha512-kf37QtfW+Hwx/buWGMPcR60iF9ziHa6r/CZJIHbmcm4+0qrXiVdxegAH0F6yddEVQ7zdkjcGCgCzUu+BcbhQxw==}
+
+  '@lukehagar/plexjs@0.32.1':
+    resolution: {integrity: sha512-cEIpepR1/BJYQey2lbzPhy342ZR/JmkChXKS+bOQkGLg1F17n45Zf650W67sBKMvF63effNVT0iUF3Fi3D7yPQ==, tarball: https://registry.npmjs.org/@lukehagar/plexjs/-/plexjs-0.32.1.tgz}
+    peerDependencies:
+      zod: '>= 3'
 
   '@motionone/animation@10.17.0':
     resolution: {integrity: sha512-ANfIN9+iq1kGgsZxs+Nz96uiNcPLGTXwfNo2Xz/fcJXniPYpaz/Uyrfa+7I5BPLxCP82sh7quVDudf1GABqHbg==}
@@ -2624,6 +2632,9 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
+  zod@3.24.1:
+    resolution: {integrity: sha512-muH7gBL9sI1nciMZV67X5fTKKBLtwpZ5VBp1vsOQzj1MhrBZ4wlVCm3gedKZWLp0Oyel8sIGfeiz54Su+OVT+A==, tarball: https://registry.npmjs.org/zod/-/zod-3.24.1.tgz}
+
 snapshots:
 
   '@aashutoshrathi/word-wrap@1.2.6': {}
@@ -2918,6 +2929,10 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
+
+  '@lukehagar/plexjs@0.32.1(zod@3.24.1)':
+    dependencies:
+      zod: 3.24.1
 
   '@motionone/animation@10.17.0':
     dependencies:
@@ -5310,3 +5325,5 @@ snapshots:
   yaml@2.3.2: {}
 
   yocto-queue@0.1.0: {}
+
+  zod@3.24.1: {}

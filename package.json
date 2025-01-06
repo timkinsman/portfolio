@@ -17,6 +17,7 @@
     "validate": "npm-run-all --parallel check-types && lint-staged"
   },
   "dependencies": {
+    "@lukehagar/plexjs": "^0.32.1",
     "@nayhoo/components": "^0.3.3",
     "@nayhoo/hooks": "^0.1.1",
     "@nayhoo/utils": "^0.1.1",
