@@ -1,5 +1,7 @@
-import { Flex, Link, Paragraph, Skeleton, styled } from '@nayhoo/components';
-import { useActiveSessions } from '../api/getActiveSessions';
+"use client";
+
+import { Flex, Link, Paragraph, Skeleton } from "@nayhoo/ui";
+import { useCurrentlyListening } from "../api/getCurrentlyListening";
 
 const Icon = () => (
   <svg
@@ -14,42 +16,30 @@ const Icon = () => (
   </svg>
 );
 
-const StyledSkeleton = styled(Skeleton, {
-  borderRadius: '$full !important',
-  size: '$6 !important',
-});
-
 export const RecentTrack = () => {
-  const activeSessions = useActiveSessions({});
+  const activeSessions = useCurrentlyListening({});
 
   if (activeSessions.isLoading) {
     return (
       <Flex align="center" gap="2" role="status">
-        <StyledSkeleton />
-        <Skeleton css={{ width: '12rem' }} />
+        <Skeleton variant="avatar2" />
+        <Skeleton style={{ width: "12rem" }} />
       </Flex>
     );
   }
 
-  if (activeSessions.isSuccess) {
-    const metadata = activeSessions.data.object?.mediaContainer?.metadata;
-    const activeSession = metadata?.find(
-      (m) => m.user?.title === import.meta.env.VITE_PLEX_USER && m.type === 'track'
+  if (activeSessions.isSuccess && activeSessions.data.data) {
+    const { artist, track } = activeSessions.data.data;
+
+    return (
+      <Flex align="center" gap="2">
+        <Icon />
+
+        <Paragraph>
+          Currently listening to {track} by {artist}.
+        </Paragraph>
+      </Flex>
     );
-
-    if (activeSession) {
-      const { title, grandparentTitle } = activeSession;
-
-      return (
-        <Flex align="center" gap="2">
-          <Icon />
-
-          <Paragraph>
-            Currently listening to {title} by {grandparentTitle}.
-          </Paragraph>
-        </Flex>
-      );
-    }
   }
 
   return (
@@ -57,8 +47,12 @@ export const RecentTrack = () => {
       <Icon />
 
       <Paragraph>
-        Probably listening to{' '}
-        <Link color="secondary" href="https://www.youtube.com/watch?v=nJGUdo5PiTA" target="_blank">
+        Probably listening to{" "}
+        <Link
+          color="secondary"
+          href="https://www.youtube.com/watch?v=nJGUdo5PiTA"
+          target="_blank"
+        >
           Baths
         </Link>
         .
