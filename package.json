@@ -10,9 +10,9 @@
     "postinstall": "husky install",
     "start": "next start",
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
-    "format": "pnpm run prettier -- --write",
+    "format": "npm run prettier -- --write",
     "check-types": "tsc --project tsconfig.json --pretty --noEmit",
-    "check-format": "pnpm run prettier -- --list-different",
+    "check-format": "npm run prettier -- --list-different",
     "validate-and-build": "npm-run-all --parallel check-types check-format lint build",
     "validate": "npm-run-all --parallel check-types && lint-staged"
   },
