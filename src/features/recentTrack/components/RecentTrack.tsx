@@ -1,69 +1,61 @@
-import { useToken } from '../api/getToken';
-import { useTracks } from '../api/getTracks';
-import { useRecentTracks } from '../api/getRecentTracks';
-import { formatTrack } from '../utils';
-import { Flex, IconButton, Link, Paragraph, Skeleton, styled } from '@nayhoo/components';
+"use client";
 
-const fallbackTrack = {
-  artists: [{ name: 'Baths' }],
-  name: 'Sunspell',
-  uri: 'https://open.spotify.com/track/1nM9Jgm0oInPG0yKtcEQD0?si=a901014dfe37479a',
-};
+import { Flex, Link, Paragraph, Skeleton } from "@nayhoo/ui";
+import { useCurrentlyListening } from "../api/getCurrentlyListening";
 
-// TODO: Make this a Skeleton variant (iconButton)
-const StyledSkeleton = styled(Skeleton, {
-  borderRadius: '$xl !important',
-  size: '$8 !important',
-});
+const Icon = () => (
+  <svg
+    fill="currentColor"
+    id="cd"
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+  >
+    <path d="M14 12c0 1.103-.897 2-2 2s-2-.897-2-2 .897-2 2-2 2 .897 2 2zm10 0c0 6.627-5.373 12-12 12s-12-5.373-12-12 5.373-12 12-12 12 5.373 12 12zm-15.44 4.912c-.572-.401-1.07-.899-1.471-1.471l-3.691 1.641c.859 1.45 2.071 2.662 3.521 3.521l1.641-3.691zm7.44-4.912c0-2.209-1.791-4-4-4s-4 1.791-4 4 1.791 4 4 4 4-1.791 4-4zm4.603-5.08c-.859-1.451-2.071-2.663-3.522-3.522l-1.641 3.691c.572.401 1.07.899 1.472 1.471l3.691-1.64z" />
+  </svg>
+);
 
 export const RecentTrack = () => {
-  const token = useToken({});
+  const activeSessions = useCurrentlyListening({});
 
-  const recentTracks = useRecentTracks({});
-
-  const access_token = token.data?.access_token;
-  const recentTrack = recentTracks.data?.recenttracks.track[0];
-
-  const tracks = useTracks({
-    access_token: access_token ?? '',
-    artist: recentTrack?.artist['#text'] ?? '',
-    config: {
-      enabled: !!access_token && !!recentTrack?.artist['#text'] && !!recentTrack?.name,
-    },
-    track: recentTrack?.name ?? '',
-  });
-
-  const track = tracks.data?.tracks.items[0];
-
-  if (token.isLoading || recentTracks.isLoading || tracks.isLoading) {
+  if (activeSessions.isLoading) {
     return (
       <Flex align="center" gap="2" role="status">
-        <StyledSkeleton />
-        <Skeleton css={{ width: '12rem' }} />
+        <Skeleton variant="avatar2" />
+        <Skeleton style={{ width: "12rem" }} />
+      </Flex>
+    );
+  }
+
+  if (activeSessions.isSuccess && activeSessions.data.data) {
+    const { artist, track } = activeSessions.data.data;
+
+    return (
+      <Flex align="center" gap="2">
+        <Icon />
+
+        <Paragraph>
+          Currently listening to {track} by {artist}.
+        </Paragraph>
       </Flex>
     );
   }
 
   return (
     <Flex align="center" gap="2">
-      <IconButton
-        onClick={() =>
-          window.open(
-            'https://open.spotify.com/user/31rr7rfdy3rqb5wfsf3ypy6dloby?si=8a2e37caa7c34156',
-            '_blank'
-          )
-        }
-        size="2"
-      >
-        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-          <path d="M19.098 10.638c-3.868-2.297-10.248-2.508-13.941-1.387-.593.18-1.22-.155-1.399-.748-.18-.593.154-1.22.748-1.4 4.239-1.287 11.285-1.038 15.738 1.605.533.317.708 1.005.392 1.538-.316.533-1.005.709-1.538.392zm-.126 3.403c-.272.44-.847.578-1.287.308-3.225-1.982-8.142-2.557-11.958-1.399-.494.15-1.017-.129-1.167-.623-.149-.495.13-1.016.624-1.167 4.358-1.322 9.776-.682 13.48 1.595.44.27.578.847.308 1.286zm-1.469 3.267c-.215.354-.676.465-1.028.249-2.818-1.722-6.365-2.111-10.542-1.157-.402.092-.803-.16-.895-.562-.092-.403.159-.804.562-.896 4.571-1.045 8.492-.595 11.655 1.338.353.215.464.676.248 1.028zm-5.503-17.308c-6.627 0-12 5.373-12 12 0 6.628 5.373 12 12 12 6.628 0 12-5.372 12-12 0-6.627-5.372-12-12-12z" />
-        </svg>
-      </IconButton>
+      <Icon />
 
       <Paragraph>
-        <Link color="secondary" href={(track ?? fallbackTrack).uri} target="_blank">
-          {formatTrack(track ?? fallbackTrack)}
+        Probably listening to{" "}
+        <Link
+          color="secondary"
+          href="https://www.youtube.com/watch?v=nJGUdo5PiTA"
+          target="_blank"
+        >
+          Baths
         </Link>
+        .
       </Paragraph>
     </Flex>
   );
