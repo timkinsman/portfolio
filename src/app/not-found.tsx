@@ -12,11 +12,11 @@ const NotFoundPage = () => {
             xs: 7,
           },
         })}
-        style={{ marginTop: "8rem", textAlign: "center" }}
+        style={{ textAlign: "center" }}
       >
         <Heading
           level="1"
-          style={{ marginTop: theme.space[8], marginBottom: theme.space[8] }}
+          style={{ marginTop: theme.space[6], marginBottom: theme.space[6] }}
         >
           404 - Not Found
         </Heading>

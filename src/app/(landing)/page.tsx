@@ -17,7 +17,7 @@ export default function Page() {
     <ContentLayout>
       <Flex gap="6" direction="column">
         <Flex align="center" gap="2" justify="between" wrap="wrap">
-          <Heading level="3">Tim Kinsman</Heading>
+          <Heading level="1">Tim Kinsman</Heading>
 
           <Flex gap="2">
             <Link href="https://github.com/timkinsman" target="_blank">
