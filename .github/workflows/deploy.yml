@@ -1,0 +1,16 @@
+name: Deploy
+
+on:
+  workflow_run:
+    workflows: ['Bump Version']
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy
+      run: |
+          URL="${{ secrets.WEBHOOK_URL }}"
+          curl -X POST -d {} "$URL" -H "Content-Type: application/json"
