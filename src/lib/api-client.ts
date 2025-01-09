@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // import { useNotifications } from "@/components/ui/notifications";
-// import { env } from "@/config/env";
+import { env } from "@/env.mjs";
 
 type RequestOptions = {
   method?: string;
@@ -70,8 +70,10 @@ async function fetchApi<T>(
     cookieHeader = await getServerCookies();
   }
 
-  //   const fullUrl = buildUrlWithParams(`${env.API_URL}${url}`, params);
-  const fullUrl = buildUrlWithParams(`${url}`, params);
+  const fullUrl = buildUrlWithParams(
+    `${env.NEXT_PUBLIC_API_URL}${url}`,
+    params,
+  );
 
   const response = await fetch(fullUrl, {
     method,

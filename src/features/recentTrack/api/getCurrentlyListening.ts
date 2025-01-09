@@ -1,6 +1,5 @@
 "use client";
 
-import { env } from "@/env.mjs";
 import { api } from "@/lib/api-client";
 import {
   ExtractFnReturnType,
@@ -13,7 +12,13 @@ export const getCurrentlyListening = (): Promise<
   BaseEntity<GetCurrentlyListeningResponse>
 > => {
   const data = api.get<BaseEntity<GetCurrentlyListeningResponse>>(
-    `${env.NEXT_PUBLIC_APP_URL}/api/currently-listening`,
+    "/api/currently-listening",
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, OPTIONS",
+      },
+    },
   );
   return data;
 };
