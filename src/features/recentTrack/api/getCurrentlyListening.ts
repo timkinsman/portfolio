@@ -13,7 +13,7 @@ export const getCurrentlyListening = (): Promise<
   BaseEntity<GetCurrentlyListeningResponse>
 > => {
   const data = api.get<BaseEntity<GetCurrentlyListeningResponse>>(
-    `${env.NEXT_PUBLIC_APP_URL}/api/currently-listening"`,
+    `${env.NEXT_PUBLIC_APP_URL}/api/currently-listening`,
   );
   return data;
 };
