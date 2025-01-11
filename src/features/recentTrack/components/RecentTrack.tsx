@@ -28,7 +28,7 @@ export const RecentTrack = () => {
     );
   }
 
-  if (activeSessions.isSuccess && activeSessions.data.data) {
+  if (activeSessions.isSuccess && activeSessions.data.data !== null) {
     const { artist, track } = activeSessions.data.data;
 
     return (

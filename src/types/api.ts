@@ -1,6 +1,7 @@
 export type BaseEntity<T> = {
-  data?: T;
-  error?: string;
+  data: T | null;
+  isError: boolean;
+  message: string | null;
 };
 
 export type GetCurrentlyListeningResponse = {
