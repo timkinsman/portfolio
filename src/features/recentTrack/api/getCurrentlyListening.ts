@@ -6,22 +6,15 @@ import {
   QueryConfig,
   useQueryWithToast,
 } from "@/lib/react-query";
-import { BaseEntity, GetCurrentlyListeningResponse } from "@/types/api";
+import { GetCurrentlyListeningApiResponse } from "@/types/api";
 
-export const getCurrentlyListening = (): Promise<
-  BaseEntity<GetCurrentlyListeningResponse>
-> => {
-  const data = api.get<BaseEntity<GetCurrentlyListeningResponse>>(
-    "/api/currently-listening",
-    {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, OPTIONS",
-      },
-    },
-  );
-  return data;
-};
+export const getCurrentlyListening =
+  (): Promise<GetCurrentlyListeningApiResponse> => {
+    const data = api.get<GetCurrentlyListeningApiResponse>(
+      "/api/currently-listening",
+    );
+    return data;
+  };
 
 type QueryFnType = typeof getCurrentlyListening;
 

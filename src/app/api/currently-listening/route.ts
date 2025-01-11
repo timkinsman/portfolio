@@ -1,15 +1,17 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { env } from "@/env.mjs";
+import { GetCurrentlyListeningApiResponse } from "@/types/api";
 import { PlexAPI } from "@lukehagar/plexjs";
 import { NextResponse } from "next/server";
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, OPTIONS",
-  // "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization",
 };
 
-export async function GET() {
+export async function GET(): Promise<
+  NextResponse<GetCurrentlyListeningApiResponse>
+> {
   try {
     const plexAPI = new PlexAPI({
       accessToken: env.PLEX_TOKEN,
@@ -26,39 +28,36 @@ export async function GET() {
     );
 
     if (!activeSession) {
-      return NextResponse.json(
-        {
-          data: null,
-          isError: false,
-          message: "Active session not found.",
-        },
-        {
-          headers: CORS_HEADERS,
-        },
-      );
-      // throw new Error("Active session not found");
+      throw new Error("Active session not found.");
     }
 
-    const { grandparentTitle, title } = activeSession;
+    const { grandparentTitle: artist, title: track } = activeSession;
 
-    const data = { artist: grandparentTitle, track: title };
+    if (!artist || !track) {
+      throw new Error("Active session track information not found.");
+    }
+
+    const data = { artist: artist, track: track };
     return NextResponse.json(
       {
         data,
+        error: null,
         isError: false,
-        message: null,
+        isSuccess: true,
       },
       {
+        status: 200,
         headers: CORS_HEADERS,
       },
     );
-  } catch (error: any) {
-    console.error("API error occurred", error.message);
+  } catch (error: unknown) {
+    console.error("API error occurred", error);
     return NextResponse.json(
       {
-        data: null,
+        data: undefined,
+        error: error,
         isError: true,
-        message: error.message,
+        isSuccess: false,
       },
       {
         status: 500,
@@ -68,9 +67,9 @@ export async function GET() {
   }
 }
 
-// export function OPTIONS() {
-//   return new Response(null, {
-//     status: 204,
-//     headers: CORS_HEADERS,
-//   });
-// }
+export function OPTIONS() {
+  return new Response(null, {
+    status: 204,
+    headers: CORS_HEADERS,
+  });
+}
