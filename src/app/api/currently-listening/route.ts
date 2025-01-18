@@ -13,6 +13,7 @@ export async function GET(): Promise<
   NextResponse<GetCurrentlyListeningApiResponse>
 > {
   try {
+    console.log("starting api call");
     const plexAPI = new PlexAPI({
       accessToken: env.PLEX_TOKEN,
       ip: env.PLEX_IP,
@@ -20,12 +21,18 @@ export async function GET(): Promise<
       protocol: "http",
     });
 
+    console.log("plexAPI", plexAPI);
+
     const result = await plexAPI.sessions.getSessions();
+
+    console.log("result", result);
 
     const metadata = result.object?.mediaContainer?.metadata;
     const activeSession = metadata?.find(
       (m) => m.user?.title === env.PLEX_USER && m.type === "track",
     );
+
+    console.log("activeSession", activeSession);
 
     if (!activeSession) {
       throw new Error("Active session not found.");
@@ -38,6 +45,9 @@ export async function GET(): Promise<
     }
 
     const data = { artist: artist, track: track };
+
+    console.log("data", data);
+
     return NextResponse.json(
       {
         data,
