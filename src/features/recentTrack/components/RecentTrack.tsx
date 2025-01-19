@@ -34,7 +34,9 @@ export const RecentTrack = () => {
 
       return (
         <Flex align="center" gap="2">
-          <Icon />
+          <Flex>
+            <Icon />
+          </Flex>
 
           <Paragraph>
             Currently listening to {track} by {artist}.
@@ -46,7 +48,9 @@ export const RecentTrack = () => {
 
   return (
     <Flex align="center" gap="2">
-      <Icon />
+      <Flex>
+        <Icon />
+      </Flex>
 
       <Paragraph>
         Probably listening to{" "}
