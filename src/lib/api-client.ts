@@ -44,8 +44,7 @@ async function fetchApi<T>(
   });
 
   if (!response.ok) {
-    console.error(response);
-    const message = (await response.json()).error || response.statusText;
+    const message = (await response.json()).message || response.statusText;
     throw new Error(message);
   }
 

@@ -26,7 +26,7 @@ export const useCurrentlyListening = ({
   config,
 }: useCurrentlyListeningOptions) => {
   return useQueryWithToast<ExtractFnReturnType<QueryFnType>>(
-    ["activeSessions"],
+    ["currentlyListening"],
     () => getCurrentlyListening(),
     config,
   );

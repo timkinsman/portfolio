@@ -4,20 +4,26 @@ export type BaseEntity<TData = unknown, TError = unknown> =
       error: null;
       isError: false;
       isSuccess: true;
-      // status: "success";
     }
   | {
       data: undefined;
       error: TError;
       isError: true;
       isSuccess: false;
-      // status: "error";
     };
 
-export type GetCurrentlyListeningResponse = {
-  artist: string;
-  track: string;
-};
+type GetCurrentlyListeningResponse =
+  | {
+      isCurrentlyListening: true;
+      currentlyListening: {
+        artist: string;
+        track: string;
+      };
+    }
+  | {
+      isCurrentlyListening: false;
+      currentlyListening: null;
+    };
 
 export type GetCurrentlyListeningApiResponse =
-  BaseEntity<GetCurrentlyListeningResponse>;
+  BaseEntity<GetCurrentlyListeningResponse | null>;

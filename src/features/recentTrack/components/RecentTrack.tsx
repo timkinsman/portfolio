@@ -17,9 +17,9 @@ const Icon = () => (
 );
 
 export const RecentTrack = () => {
-  const activeSessions = useCurrentlyListening({});
+  const currentlyListening = useCurrentlyListening({});
 
-  if (activeSessions.isLoading) {
+  if (currentlyListening.isLoading) {
     return (
       <Flex align="center" gap="2" role="status">
         <Skeleton variant="avatar2" />
@@ -28,18 +28,20 @@ export const RecentTrack = () => {
     );
   }
 
-  if (activeSessions.isSuccess && activeSessions.data.data !== undefined) {
-    const { artist, track } = activeSessions.data.data;
+  if (currentlyListening.isSuccess) {
+    if (currentlyListening.data.data?.isCurrentlyListening) {
+      const { artist, track } = currentlyListening.data.data.currentlyListening;
 
-    return (
-      <Flex align="center" gap="2">
-        <Icon />
+      return (
+        <Flex align="center" gap="2">
+          <Icon />
 
-        <Paragraph>
-          Currently listening to {track} by {artist}.
-        </Paragraph>
-      </Flex>
-    );
+          <Paragraph>
+            Currently listening to {track} by {artist}.
+          </Paragraph>
+        </Flex>
+      );
+    }
   }
 
   return (
