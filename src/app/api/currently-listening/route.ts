@@ -50,7 +50,6 @@ export async function GET(): Promise<
       currentlyListening: data,
     });
   } catch (error: unknown) {
-    console.error("API error occurred", error);
     return handleApiError(error);
   }
 }
@@ -78,10 +77,9 @@ const handleApiSuccess = <T>(data: T) => {
 };
 
 const handleApiError = (error: unknown) => {
-  console.error("API error occurred", error);
   return NextResponse.json(
     {
-      data: undefined,
+      data: null,
       error: `${error}`,
       isError: true as const,
       isSuccess: false as const,

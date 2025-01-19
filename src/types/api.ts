@@ -6,7 +6,7 @@ export type BaseEntity<TData = unknown, TError = unknown> =
       isSuccess: true;
     }
   | {
-      data: undefined;
+      data: null;
       error: TError;
       isError: true;
       isSuccess: false;
@@ -26,4 +26,4 @@ type GetCurrentlyListeningResponse =
     };
 
 export type GetCurrentlyListeningApiResponse =
-  BaseEntity<GetCurrentlyListeningResponse | null>;
+  BaseEntity<GetCurrentlyListeningResponse>;
