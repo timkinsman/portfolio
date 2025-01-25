@@ -14,13 +14,11 @@ type AppProviderProps = {
 export const AppProvider = ({ children, theme }: AppProviderProps) => {
   return (
     <ThemeProvider mode={theme}>
-      {/* <Toast> */}
       <QueryClientProvider client={queryClient}>
         {process.env.NODE_ENV !== "test" && <ReactQueryDevtools />}
 
         {children}
       </QueryClientProvider>
-      {/* </Toast> */}
     </ThemeProvider>
   );
 };
