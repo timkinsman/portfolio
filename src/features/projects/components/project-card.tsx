@@ -1,5 +1,5 @@
-import { Badge } from "@/components/ui/badge";
 import {
+  Badge,
   Card,
   Flex,
   Heading,
