@@ -13,7 +13,10 @@ export const ContentLayout = ({ children, title }: ContentLayoutProps) => {
     <main className="h-screen">
       <Nav />
 
-      <Container size="2" style={{ paddingTop: "9rem", paddingBottom: theme.space[6] }}>
+      <Container
+        size="2"
+        style={{ paddingTop: "9rem", paddingBottom: theme.space[6] }}
+      >
         <Flex gap="6" direction="column">
           {title && <Header title={title} />}
           {children}

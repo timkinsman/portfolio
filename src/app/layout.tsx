@@ -39,6 +39,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const theme = await getTheme();
+
   return (
     <html lang="en">
       <GoogleTagManager gtmId={env.NEXT_PUBLIC_GTM_ID} />

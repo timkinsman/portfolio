@@ -13,6 +13,7 @@ export const getCurrentlyListening =
     const data = api.get<GetCurrentlyListeningApiResponse>(
       "/api/currently-listening",
     );
+
     return data;
   };
 

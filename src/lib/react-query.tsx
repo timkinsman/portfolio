@@ -47,7 +47,7 @@ export const useQueryWithToast = <QueryFnData,>(
 
   return useQuery({
     queryKey: key,
-    queryFn: queryFn,
+    queryFn,
     ...merge(queryConfig, options ?? {}),
     onError: (err) => {
       // toast({
