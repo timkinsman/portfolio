@@ -16,10 +16,12 @@ function buildUrlWithParams(
       ([, value]) => value !== undefined && value !== null,
     ),
   );
+
   if (Object.keys(filteredParams).length === 0) return url;
   const queryString = new URLSearchParams(
     filteredParams as Record<string, string>,
   ).toString();
+
   return `${url}?${queryString}`;
 }
 

@@ -43,7 +43,7 @@ export async function GET(): Promise<
       });
     }
 
-    const data = { artist: artist, track: track };
+    const data = { artist, track };
 
     return handleApiSuccess({
       isCurrentlyListening: true,
