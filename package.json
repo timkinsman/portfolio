@@ -19,6 +19,7 @@
   "dependencies": {
     "@lukehagar/plexjs": "^0.32.1",
     "@nayhoo/hooks": "^0.2.0",
+    "@nayhoo/providers": "^0.1.0",
     "@nayhoo/ui": "^0.2.0",
     "@nayhoo/utils": "^0.1.1",
     "@next/third-parties": "^15.1.3",

@@ -1,7 +1,7 @@
 "use client";
 
 import { setTheme } from "@/actions/set-theme-action";
-import { ThemeContext } from "@/providers/theme-provider";
+import { ThemeContext } from "@nayhoo/providers";
 import { IconButton } from "@nayhoo/ui";
 import { useContext } from "react";
 
