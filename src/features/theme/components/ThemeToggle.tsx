@@ -1,8 +1,8 @@
 "use client";
 
 import { setTheme } from "@/actions/set-theme-action";
-import { ThemeContext } from "@nayhoo/providers";
 import { IconButton } from "@nayhoo/ui";
+import { ThemeContext } from "@nayhoo/ui/providers";
 import { useContext } from "react";
 
 export const ThemeToggle = () => {
