@@ -1,7 +1,7 @@
 import { getTheme } from "@/actions/get-theme-action";
 import { env } from "@/env.mjs";
 import "@/styles/globals.css";
-import "@nayhoo/ui/dist/index.css";
+import "@nayhoo/ui/css";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
