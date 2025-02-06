@@ -1,7 +1,7 @@
 "use client";
 
+import { useCurrentlyListening } from "@/features/recent-track/api/get-currently-listening";
 import { Flex, Link, Paragraph, Skeleton } from "@nayhoo/ui";
-import { useCurrentlyListening } from "../api/getCurrentlyListening";
 
 const Icon = () => (
   <svg

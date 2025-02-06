@@ -1,6 +1,6 @@
-import { ContentLayout } from "@/components/layouts";
+import { ContentLayout } from "@/components/layouts/content-layout";
 import { env } from "@/env.mjs";
-import { RecentTrack } from "@/features/recentTrack";
+import { RecentTrack } from "@/features/recent-track/components/recent-track";
 import { Box, Link, Paragraph, theme } from "@nayhoo/ui";
 
 export default function Page() {

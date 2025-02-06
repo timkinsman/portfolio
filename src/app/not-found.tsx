@@ -1,4 +1,4 @@
-import { ContentLayout } from "@/components/layouts/ContentLayout";
+import { ContentLayout } from "@/components/layouts/content-layout";
 import { Box, Button, Heading, Paragraph, theme } from "@nayhoo/ui";
 import NextLink from "next/link";
 

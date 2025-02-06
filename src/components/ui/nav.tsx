@@ -1,6 +1,6 @@
 "use client";
 
-import { ThemeToggle } from "@/features/theme";
+import { ThemeToggle } from "@/features/theme/components/theme-toggle";
 import { useScrollPosition } from "@nayhoo/hooks";
 import {
   Box,

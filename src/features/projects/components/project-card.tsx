@@ -1,3 +1,4 @@
+import { Project } from "@/features/projects/types/project";
 import {
   Badge,
   Card,
@@ -8,7 +9,6 @@ import {
   sprinkles,
   theme,
 } from "@nayhoo/ui";
-import { Project } from "../types/project";
 
 export type ProjectCardProps = {
   project: Project;

@@ -1,4 +1,4 @@
-import { ContentLayout } from "@/components/layouts";
+import { ContentLayout } from "@/components/layouts/content-layout";
 import { ProjectCard } from "@/features/projects/components/project-card";
 import { projects } from "@/features/projects/constants/projects";
 import { Grid } from "@nayhoo/ui";
