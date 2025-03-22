@@ -11,7 +11,7 @@ export default function Page() {
     <ContentLayout title="Tim Kinsman">
       <Box>
         <Paragraph>
-          Hi! I&apos;m a React front-end developer based in Adelaide.
+          Hi! I&apos;m a front-end developer based in Adelaide.
         </Paragraph>
 
         <Paragraph style={{ marginTop: theme.space[3] }}>
