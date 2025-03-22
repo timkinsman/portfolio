@@ -1,14 +1,11 @@
 import { Project } from "@/features/projects/types/project";
-import {
-  Badge,
-  Card,
-  Flex,
-  Heading,
-  Link,
-  Paragraph,
-  sprinkles,
-  theme,
-} from "@nayhoo/ui";
+import { Badge } from "@nayhoo/ui/badge";
+import { Card } from "@nayhoo/ui/card";
+import { Flex } from "@nayhoo/ui/flex";
+import { Heading } from "@nayhoo/ui/heading";
+import { Link } from "@nayhoo/ui/link";
+import { Paragraph } from "@nayhoo/ui/paragraph";
+import { sprinkles, theme } from "@nayhoo/ui/theme";
 
 export type ProjectCardProps = {
   project: Project;

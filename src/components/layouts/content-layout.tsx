@@ -1,7 +1,7 @@
-import { Container, Flex } from "@nayhoo/ui";
-
 import { Header } from "@/components/ui/header";
 import { Nav } from "@/components/ui/nav";
+import { Container } from "@nayhoo/ui/container";
+import { Flex } from "@nayhoo/ui/flex";
 import * as React from "react";
 
 type ContentLayoutProps = {

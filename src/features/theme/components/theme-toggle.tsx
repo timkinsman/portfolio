@@ -1,39 +1,39 @@
 "use client";
 
-import { setTheme } from "@/actions/set-theme-action";
-import { IconButton } from "@nayhoo/ui";
+import { Flex } from "@nayhoo/ui/flex";
+import { IconButton } from "@nayhoo/ui/icon-button";
 import { ThemeContext } from "@nayhoo/ui/providers";
+import { theme } from "@nayhoo/ui/theme";
 import { useContext } from "react";
 
 export const ThemeToggle = () => {
-  const theme = useContext(ThemeContext);
-  const isDarkMode = theme === "dark";
+  const { theme: activeTheme, setTheme } = useContext(ThemeContext);
 
   return (
-    <IconButton
-      onClick={() => {
-        setTheme(isDarkMode ? "light" : "dark");
+    <Flex
+      gap="1"
+      style={{
+        borderRadius: theme.radii.full,
+        outline: `1px solid ${theme.semanticColors.line}`,
       }}
-      size="2"
     >
-      {isDarkMode ? (
+      {/* light theme button */}
+      <IconButton
+        onClick={() => setTheme("light")}
+        round
+        size="2"
+        style={{
+          background:
+            activeTheme === "light"
+              ? theme.semanticColors.transparentActive
+              : "",
+        }}
+      >
         <svg
-          id="theme-toggle-dark-icon"
           fill="currentColor"
           viewBox="0 0 20 20"
-          height="24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-        </svg>
-      ) : (
-        <svg
-          id="theme-toggle-light-icon"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          height="24"
-          width="24"
+          height="20"
+          width="20"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -42,7 +42,55 @@ export const ThemeToggle = () => {
             clipRule="evenodd"
           ></path>
         </svg>
-      )}
-    </IconButton>
+      </IconButton>
+
+      {/* system theme button */}
+      <IconButton
+        onClick={() => setTheme("system")}
+        round
+        size="2"
+        style={{
+          background:
+            activeTheme === "system"
+              ? theme.semanticColors.transparentActive
+              : "",
+        }}
+      >
+        <svg
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          width="16"
+          height="16"
+          xmlns="http://www.w3.org/2000/svg"
+          fillRule="evenodd"
+          clipRule="evenodd"
+        >
+          <path d="M17 24h-10v-1c1.533-.366 2.386-1.572 2.497-3h5.006c.111 1.427.964 2.634 2.497 3v1zm6-5c.265 0 .52-.105.707-.293.188-.187.293-.442.293-.707v-17c0-.265-.105-.52-.293-.707-.187-.188-.442-.293-.707-.293h-22c-.265 0-.52.105-.707.293-.188.187-.293.442-.293.707v17c0 .265.105.52.293.707.187.188.442.293.707.293h22zm-11-3.419c.552 0 1 .448 1 1s-.448 1-1 1-1-.448-1-1 .448-1 1-1zm10-13.581h-20v12h20v-12z" />
+        </svg>
+      </IconButton>
+
+      {/* dark theme button */}
+      <IconButton
+        onClick={() => setTheme("dark")}
+        round
+        size="2"
+        style={{
+          background:
+            activeTheme === "dark"
+              ? theme.semanticColors.transparentActive
+              : "",
+        }}
+      >
+        <svg
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          height="20"
+          width="20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+        </svg>
+      </IconButton>
+    </Flex>
   );
 };

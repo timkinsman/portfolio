@@ -1,4 +1,4 @@
-import { Heading } from "@nayhoo/ui";
+import { Heading } from "@nayhoo/ui/heading";
 
 type HeaderProps = {
   title: string;

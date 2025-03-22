@@ -1,5 +1,9 @@
 import { ContentLayout } from "@/components/layouts/content-layout";
-import { Box, Button, Heading, Paragraph, theme } from "@nayhoo/ui";
+import { Box } from "@nayhoo/ui/box";
+import { Button } from "@nayhoo/ui/button";
+import { Heading } from "@nayhoo/ui/heading";
+import { Paragraph } from "@nayhoo/ui/paragraph";
+import { theme } from "@nayhoo/ui/theme";
 import NextLink from "next/link";
 
 const NotFoundPage = () => {
