@@ -1,7 +1,6 @@
-import { getTheme } from "@/actions/get-theme-action";
 import { env } from "@/env.mjs";
 import "@/styles/globals.css";
-import "@nayhoo/ui/css";
+import "@nayhoo/ui/theme/index.css";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
@@ -38,13 +37,11 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const theme = await getTheme();
-
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <GoogleTagManager gtmId={env.NEXT_PUBLIC_GTM_ID} />
       <body className={`${openSauceOne.variable}`}>
-        <AppProvider theme={theme}>{children}</AppProvider>
+        <AppProvider>{children}</AppProvider>
       </body>
       <GoogleAnalytics gaId={env.NEXT_PUBLIC_ANALYTICS_ID} />
     </html>

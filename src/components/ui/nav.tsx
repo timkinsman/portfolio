@@ -1,16 +1,13 @@
 "use client";
 
-import { ThemeToggle } from "@/features/theme";
+import { ThemeToggle } from "@/features/theme/components/theme-toggle";
 import { useScrollPosition } from "@nayhoo/hooks";
-import {
-  Box,
-  Container,
-  Flex,
-  IconButton,
-  Link as NayhooLink,
-  sprinkles,
-  theme,
-} from "@nayhoo/ui";
+import { Box } from "@nayhoo/ui/box";
+import { Container } from "@nayhoo/ui/container";
+import { Flex } from "@nayhoo/ui/flex";
+import { IconButton } from "@nayhoo/ui/icon-button";
+import { Link as NayhooLink } from "@nayhoo/ui/link";
+import { sprinkles, theme } from "@nayhoo/ui/theme";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -73,7 +70,7 @@ export const Nav = () => {
 
             <Flex gap="2">
               <NayhooLink href="https://github.com/timkinsman" target="_blank">
-                <IconButton size="2">
+                <IconButton round size="2">
                   <svg
                     fill="currentColor"
                     height="24"

@@ -8,12 +8,11 @@ import { ReactQueryDevtools } from "react-query/devtools";
 
 type AppProviderProps = {
   children: React.ReactNode;
-  theme?: "light" | "dark";
 };
 
-export const AppProvider = ({ children, theme }: AppProviderProps) => {
+export const AppProvider = ({ children }: AppProviderProps) => {
   return (
-    <ThemeProvider themeMode={theme}>
+    <ThemeProvider>
       <QueryClientProvider client={queryClient}>
         {process.env.NODE_ENV !== "test" && <ReactQueryDevtools />}
 
