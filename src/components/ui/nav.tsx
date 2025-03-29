@@ -69,6 +69,8 @@ export const Nav = () => {
             </Flex>
 
             <Flex gap="2">
+              <ThemeToggle />
+
               <NayhooLink href="https://github.com/timkinsman" target="_blank">
                 <IconButton round size="2">
                   <svg
@@ -82,8 +84,6 @@ export const Nav = () => {
                   </svg>
                 </IconButton>
               </NayhooLink>
-
-              <ThemeToggle />
             </Flex>
           </Flex>
         </Container>

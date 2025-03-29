@@ -2,19 +2,25 @@
 
 import { Flex } from "@nayhoo/ui/flex";
 import { IconButton } from "@nayhoo/ui/icon-button";
-import { ThemeContext } from "@nayhoo/ui/providers";
-import { theme } from "@nayhoo/ui/theme";
-import { useContext } from "react";
+import { useTheme } from "@nayhoo/ui/providers";
+import { theme as token } from "@nayhoo/ui/theme";
+import { useEffect, useState } from "react";
 
 export const ThemeToggle = () => {
-  const { theme: activeTheme, setTheme } = useContext(ThemeContext);
+  const { theme, setTheme } = useTheme();
+
+  const [t, setT] = useState<typeof theme | null>(null);
+
+  useEffect(() => {
+    setT(theme);
+  }, [theme]);
 
   return (
     <Flex
       gap="1"
       style={{
-        borderRadius: theme.radii.full,
-        outline: `1px solid ${theme.semanticColors.line}`,
+        borderRadius: token.radii.full,
+        outline: `1px solid ${token.semanticColors.line}`,
       }}
     >
       {/* light theme button */}
@@ -24,9 +30,7 @@ export const ThemeToggle = () => {
         size="2"
         style={{
           background:
-            activeTheme === "light"
-              ? theme.semanticColors.transparentActive
-              : "",
+            t === "light" ? token.semanticColors.transparentActive : "",
         }}
       >
         <svg
@@ -51,9 +55,7 @@ export const ThemeToggle = () => {
         size="2"
         style={{
           background:
-            activeTheme === "system"
-              ? theme.semanticColors.transparentActive
-              : "",
+            t === "system" ? token.semanticColors.transparentActive : "",
         }}
       >
         <svg
@@ -76,9 +78,7 @@ export const ThemeToggle = () => {
         size="2"
         style={{
           background:
-            activeTheme === "dark"
-              ? theme.semanticColors.transparentActive
-              : "",
+            t === "dark" ? token.semanticColors.transparentActive : "",
         }}
       >
         <svg
