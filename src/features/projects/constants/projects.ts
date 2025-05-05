@@ -2,7 +2,18 @@ import { Project } from "@/features/projects/types/project";
 
 export const projects: Project[] = [
   {
-    title: "nayhoo/ui",
+    title: "Homemade Recipes",
+    tags: [
+      "React",
+      "TypeScript",
+      "vanilla-extract",
+    ],
+    description:
+      "An extension of @vanilla-extract/recipes that adds responsive variant utilities.",
+    sourceCodeLink: "https://github.com/timkinsman/homemade-recipes",
+  },
+  {
+    title: "@nayhoo/ui",
     tags: [
       "Radix Colors",
       "Radix Primitives",
