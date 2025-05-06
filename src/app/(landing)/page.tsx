@@ -26,32 +26,20 @@ export default function Page() {
           and on a number of projects, including{" "}
           <Link
             color="secondary"
-            href="https://www.github.com/nayhoo/ui"
+            href="https://www.github.com/timkinsman/homemade-recipes"
             target="_blank"
           >
-            Nayhoo
+            Homemade Recipes
           </Link>
-          , a collection of{" "}
-          <Link color="secondary" href="https://react.dev/" target="_blank">
-            React
-          </Link>{" "}
-          hooks, utils and components built with{" "}
+          , an extension of{" "}
           <Link
             color="secondary"
-            href="https://www.radix-ui.com/"
+            href="https://vanilla-extract.style/documentation/packages/recipes/"
             target="_blank"
           >
-            Radix UI
+            @vanilla-extract/recipes
           </Link>{" "}
-          and{" "}
-          <Link
-            color="secondary"
-            href="https://vanilla-extract.style"
-            target="_blank"
-          >
-            Vanilla Extract
-          </Link>{" "}
-          intended for personal use.{" "}
+          with responsive variants.{" "}
           <Link
             color="secondary"
             href={env.NEXT_PUBLIC_CV_GOOGLE_DRIVE_LINK}
