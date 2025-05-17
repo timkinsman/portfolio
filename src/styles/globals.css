@@ -66,6 +66,154 @@ p {
   min-height: 100dvh;
 }
 
+::selection {
+  background-color: #47a3f3;
+  color: #fefefe;
+}
+
+:root {
+  --sh-class: #2d5e9d;
+  --sh-identifier: #354150;
+  --sh-sign: #8996a3;
+  --sh-string: #007f7a;
+  --sh-keyword: #e02518;
+  --sh-comment: #a19595;
+  --sh-jsxliterals: #6266d1;
+  --sh-property: #e25a1c;
+  --sh-entity: #e25a1c;
+}
+
+.dark-theme__1mh7hnp0 {
+  --sh-class: #4c97f8;
+  --sh-identifier: white;
+  --sh-keyword: #f47067;
+  --sh-string: #0fa295;
+  color-scheme: dark;
+}
+
+.prose .anchor {
+  position: absolute;
+  visibility: hidden;
+  margin-left: -1em;
+  padding-right: 0.5em;
+  width: 80%;
+  max-width: 700px;
+  cursor: pointer;
+}
+
+.prose pre {
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 8px;
+  border: 1px solid;
+  font-size: 14px;
+  border-color: #00002d17;
+
+  overflow: auto;
+}
+
+.dark-theme__1mh7hnp0 .prose pre {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.prose code {
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 8px;
+}
+
+.prose pre code {
+  padding: 0;
+
+  border: initial;
+  line-height: 1.5;
+}
+
+.prose code span {
+  font-weight: 500;
+}
+
+.prose img {
+  margin: 0;
+}
+
+.prose p {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.prose h1 {
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+.prose h2 {
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+.prose h3 {
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+.prose h4 {
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+.prose strong {
+  font-weight: 500;
+}
+
+.prose ul {
+  list-style-type: disc;
+  padding-left: 24px;
+}
+
+.prose ol {
+  list-style-type: decimal;
+  padding-left: 24px;
+}
+
+.prose ul li,
+.prose ol li {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+pre {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Remove Safari input shadow on mobile */
+input[type="text"],
+input[type="email"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+table {
+  display: block;
+  max-width: fit-content;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.title {
+  text-wrap: balance;
+}
+
 a {
-  text-decoration: none;
+  text-decoration: unset;
 }

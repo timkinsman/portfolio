@@ -1,14 +1,18 @@
+import { getBlogPosts } from "@/features/blog/utils";
 import { MetadataRoute } from "next";
-import { headers } from "next/headers";
+
+export const baseUrl = "https://timkinsman.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const headersList = await headers();
-  const domain = headersList.get("host") as string;
-
-  const routes = ["", "/projects"].map((route) => ({
-    url: `https://${domain}${route}`,
-    lastModified: new Date(),
+  const blogs = getBlogPosts().map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: post.metadata.publishedAt,
   }));
 
-  return [...routes];
+  const routes = ["", "/projects", "/blog"].map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date().toISOString().split("T")[0],
+  }));
+
+  return [...routes, ...blogs];
 }

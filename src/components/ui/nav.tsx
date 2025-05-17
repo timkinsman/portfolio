@@ -1,19 +1,23 @@
 "use client";
 
+import { ThemeDropdown } from "@/features/theme/components/theme-dropdown";
 import { ThemeToggle } from "@/features/theme/components/theme-toggle";
 import { useScrollPosition } from "@nayhoo/hooks";
 import { Box } from "@nayhoo/ui/box";
+import { Button } from "@nayhoo/ui/button";
 import { Container } from "@nayhoo/ui/container";
 import { Flex } from "@nayhoo/ui/flex";
 import { IconButton } from "@nayhoo/ui/icon-button";
 import { Link as NayhooLink } from "@nayhoo/ui/link";
 import { sprinkles, theme } from "@nayhoo/ui/theme";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
 
 const navigation = [
   { label: "About", path: "/" },
   { label: "Projects", path: "/projects" },
+  { label: "Blog", path: "/blog" },
 ];
 
 export const Nav = () => {
@@ -21,6 +25,39 @@ export const Nav = () => {
   const scrollPosition = useScrollPosition();
 
   const isScrolled = scrollPosition > 24;
+
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const router = useRouter();
+
+  const Navigation = () => (
+    <Flex
+      direction="column"
+      justify="center"
+      style={{ height: "100%", padding: theme.space[2] }}
+    >
+      <Box>
+        {navigation.map((item) => {
+          const isSelected = pathname === item.path;
+
+          return (
+            <Button
+              fullWidth
+              key={item.label}
+              onClick={() => router.push(item.path)}
+              style={{
+                justifyContent: "flex-start",
+              }}
+              variant={isSelected ? "primary" : "ghost"}
+              size="3"
+            >
+              {item.label}
+            </Button>
+          );
+        })}
+      </Box>
+    </Flex>
+  );
 
   return (
     <Box
@@ -52,24 +89,82 @@ export const Nav = () => {
           }}
         >
           <Flex align="center" gap="4" justify="between">
-            <Flex gap="4">
-              {navigation.map((item) => {
-                const isSelected = item.path === pathname;
-
-                return (
-                  <NayhooLink
-                    key={item.label}
-                    asChild
-                    style={{ textDecoration: isSelected ? "underline" : "" }}
-                  >
-                    <Link href={item.path}>{item.label}</Link>
-                  </NayhooLink>
-                );
+            <IconButton
+              className={sprinkles({
+                display: {
+                  initial: "block",
+                  xs: "none",
+                },
               })}
-            </Flex>
+              size="2"
+              onClick={() => setIsDrawerOpen(true)}
+              round
+            >
+              <svg
+                fill="currentColor"
+                clipRule="evenodd"
+                fillRule="evenodd"
+                strokeLinejoin="round"
+                strokeMiterlimit="2"
+                viewBox="0 0 24 24"
+                height={24}
+                width={24}
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m22 16.75c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75z"
+                  fillRule="nonzero"
+                />
+              </svg>
+            </IconButton>
+
+            <Box
+              className={sprinkles({
+                display: {
+                  initial: "none",
+                  xs: "block",
+                },
+              })}
+            >
+              <Flex gap="4">
+                {navigation.map((item) => {
+                  const isSelected = item.path === pathname;
+
+                  return (
+                    <NayhooLink
+                      key={item.label}
+                      asChild
+                      style={{ textDecoration: isSelected ? "underline" : "" }}
+                    >
+                      <Link href={item.path}>{item.label}</Link>
+                    </NayhooLink>
+                  );
+                })}
+              </Flex>
+            </Box>
 
             <Flex gap="2">
-              <ThemeToggle />
+              <Box
+                className={sprinkles({
+                  display: {
+                    initial: "block",
+                    xs: "none",
+                  },
+                })}
+              >
+                <ThemeDropdown />
+              </Box>
+
+              <Box
+                className={sprinkles({
+                  display: {
+                    initial: "none",
+                    xs: "block",
+                  },
+                })}
+              >
+                <ThemeToggle />
+              </Box>
 
               <NayhooLink href="https://github.com/timkinsman" target="_blank">
                 <IconButton round size="2">
@@ -87,6 +182,40 @@ export const Nav = () => {
             </Flex>
           </Flex>
         </Container>
+
+        {isDrawerOpen && (
+          <Box
+            onClick={() => setIsDrawerOpen(false)}
+            style={{
+              backgroundColor: theme.semanticColors.transparentActive, // TODO: works but should this be this var?
+              bottom: 0,
+              left: 0,
+              position: "fixed",
+              right: 0,
+              top: 0,
+              zIndex: theme.zIndices[2],
+            }}
+            className={sprinkles({
+              display: {
+                initial: "block",
+                xs: "none",
+              },
+            })}
+          >
+            <Box
+              style={{
+                backgroundColor: theme.semanticColors.background,
+                borderRight: `1px ${theme.semanticColors.line} solid`,
+                bottom: 0,
+                left: 0,
+                position: "fixed",
+                top: 0,
+              }}
+            >
+              <Navigation />
+            </Box>
+          </Box>
+        )}
       </nav>
     </Box>
   );

@@ -1,16 +1,12 @@
-import { headers } from "next/headers";
+import { baseUrl } from "./sitemap";
 
-export default async function robots() {
-  const headersList = await headers();
-  const domain = headersList.get("host") as string;
-
+export default function robots() {
   return {
     rules: [
       {
         userAgent: "*",
       },
     ],
-    sitemap: `${domain}/sitemap.xml`,
-    host: `${domain}`,
+    sitemap: `${baseUrl}/sitemap.xml`,
   };
 }

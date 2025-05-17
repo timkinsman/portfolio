@@ -23,7 +23,11 @@ export const ContentLayout = ({ children, title }: ContentLayoutProps) => {
           paddingBottom: "9rem",
         }}
       >
-        <Flex gap="6" direction="column" style={{ margin: "auto" }}>
+        <Flex
+          gap="6"
+          direction="column"
+          style={{ margin: "auto", maxWidth: "100%" }}
+        >
           {title && <Header title={title} />}
           {children}
         </Flex>
