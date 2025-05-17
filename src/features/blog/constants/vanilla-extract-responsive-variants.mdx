@@ -1,0 +1,205 @@
+---
+title: 'Vanilla Extract with responsive variants'
+publishedAt: '2025-05-17'
+summary: 'Extending @vanilla-extract/recipes with tailwind-variant inspired `responsiveVariants`.'
+---
+
+Vanilla Extract is a great styling solution. I discovered it after using Stitches quite a lot for personal use. But while Stitches is still a great option, it's unfortunately no longer actively maintained. So I looked for another styling library with great DX to play with, and found Vanilla Extract.
+
+> ["Basically, it's “CSS Modules-in-TypeScript” but with scoped CSS Variables + heaps more."](https://github.com/vanilla-extract-css/vanilla-extract)
+
+However I felt one feature was missing that I liked from Stitches when migrating my [personal component library](https://github.com/nayhoo/ui/tree/main/packages/ui), which was it's built-in support for [responsive variants](https://stitches.dev/docs/responsive-styles). The two libraries have different approaches to styling, so it's understandable that Vanilla Extract doesn't offer a similar solution. But I still wanted to bring responsive variants to my component library, this became the main motivation for creating Homemade Recipes.
+
+# Homemade Recipes
+
+I created a packaged called Homemade Recipes which is an extension of `@vanilla-extract/recipes` that adds responsive variants. It is built for projects that need responsive styling with recipes while keeping Vanilla Extract's type safety approach.
+
+## How it works
+
+### Setup
+
+`createHomemadeRecipe` accepts key/value pairs where the keys become your responsive modifiers, and the values are the min-width where that breakpoint should start.
+
+```ts
+// homemade-recipe.css.ts
+import { createHomemadeRecipe } from "homemade-recipes";
+
+export const homemadeRecipe = createHomemadeRecipe({
+  /** Phones (landscape) */
+  xs: "520px",
+  /** Tablets (portrait) */
+  sm: "768px",
+  /** Tablets (landscape) */
+  md: "1024px",
+  /** Laptops */
+  lg: "1280px",
+  /** Desktops */
+  xl: "1640px",
+});
+```
+
+`homemadeRecipe` extends [recipe](https://vanilla-extract.style/documentation/packages/recipes/#recipe) that accepts an optional `responsiveVariants`.
+
+```ts
+// button-recipe.css.ts
+import { HomemadeRecipeVariants } from "homemade-recipes";
+import { homemadeRecipe } from "./homemade-recipe.css";
+
+export const buttonRecipe = homemadeRecipe({
+  base: {
+    borderRadius: 6,
+  },
+
+  variants: {
+    fullWidth: {
+      true: {
+        width: "100%",
+      },
+      false: {
+        width: "unset",
+      },
+    },
+    variant: {
+      bright: "bright",
+    },
+  },
+
+  responsiveVariants: ["sm"],
+});
+
+export type ButtonVariants = NonNullable<
+  HomemadeRecipeVariants<typeof buttonRecipe>
+>;
+```
+
+> `responsiveVariants: ["sm"]` will generate an additional set of classes at build time.
+
+```css
+.button-recipe__4lwr860 {
+  border-radius: 6px;
+}
+.button-recipe_fullWidth_true__4lwr861 {
+  width: 100%;
+}
+.button-recipe_fullWidth_false__4lwr862 {
+  width: unset;
+}
++ @media screen and (min-width: 768px) {
++   .button-recipe_fullWidth_sm_true__4lwr863 {
++     width: 100%;
++   }
++   .button-recipe_fullWidth_sm_false__4lwr864 {
++     width: unset;
++   }
++ }
+```
+
+[appendCss](./src/sheet.ts#L69) will generate (at runtime).
+
+```html
+<style
+  data-package="homemade-recipes"
+  data-identifier="homemade-recipe__1qtsqlc0"
+  type="text/css"
+>
+  @media screen and (min-width: 768px) {
+    .bright_sm {
+      color: orange;
+      font-family: Arial;
+    }
+  }
+</style>
+```
+
+> By passing in an existing class (i.e. [bright](https://github.com/timkinsman/homemade-recipes/tree/main/apps/vite-react-ts/src/index.css#L70)), `bright_sm` can now be created.
+
+With this homemade recipe, you can now use it for your button component.
+
+```tsx
+// button.tsx
+import { ButtonVariants, buttonRecipe } from "./button-recipe.css";
+
+type ButtonProps = ButtonVariants;
+
+export const Button = ({ fullWidth, variant }: ButtonProps) => {
+  return (
+    <button className={buttonRecipe({ fullWidth, variant })}>
+      Hello world
+    </button>
+  );
+};
+```
+
+### Usage
+
+```tsx
+// App.tsx
+import "./App.css";
+import { Button } from "./button";
+
+function App() {
+  return (
+    <Button
+      // fullWidth?: boolean | { initial?: boolean; sm?: boolean; }
+      fullWidth={{ initial: true, sm: false }}
+      // variant?: "bright" | { initial?: "bright"; sm?: "bright"; }
+      variant={{ sm: "bright" }}
+    />
+  );
+}
+
+export default App;
+```
+
+The following CSS classes will be applied to your `Button` component.
+
+```
+button-recipe__1d33wle0 button-recipe_fullWidth_true__1d33wle1 button-recipe_fullWidth_sm_false__1d33wle5 bright_sm
+```
+
+The classes
+
+```css
+.button-recipe__4lwr860 {
+  border-radius: 6px;
+}
+
+.button-recipe_fullWidth_true__4lwr861 {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .button-recipe_fullWidth_sm_false__4lwr864 {
+    width: unset;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .bright_sm {
+    color: orange;
+    font-family: Arial;
+  }
+}
+```
+
+[Check out the example.](https://github.com/timkinsman/homemade-recipes/tree/main/apps/vite-react-ts/)
+
+## Final thoughts
+
+Handling existing classes (i.e. "bright" in the example above) was the biggest unknown because it raised the question, "how to create a responsive version of a class that's not known at build time?". I'm not convinced with the current solution of sifting through css in the DOM at runtime and generating a new css sheet of responsive classes, but it is what I've landed on for the meantime.
+
+Please feel free to fork, use, or raise discussions/issues. I use this package with personal projects so I'll be working on making this the best it can be 😃
+
+[Source code](https://github.com/timkinsman/homemade-recipes/)
+
+## More examples
+
+- [Stand-alone UI package.](https://github.com/timkinsman/homemade-recipes/tree/main/packages/ui)
+- [Nextjs (app router) consuming UI package.](https://github.com/timkinsman/homemade-recipes/tree/main/apps/nextjs/)
+
+## Thanks
+
+- [Vanilla Extract](https://vanilla-extract.style/) - For creating an awesome library
+- [Tailwind Variants](https://www.tailwind-variants.org) - For the inspiration behind `responsiveVariants` functionality ([discontinued](https://www.tailwind-variants.org/docs/tailwind-v4#breaking-changes))
+- [Rainbow Sprinkles](https://github.com/wayfair/rainbow-sprinkles) & [Dessert Box](https://github.com/TheMightyPenguin/dessert-box) - For inspiration on extending Vanilla Extract
+
