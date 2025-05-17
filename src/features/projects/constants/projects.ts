@@ -2,7 +2,14 @@ import { Project } from "@/features/projects/types/project";
 
 export const projects: Project[] = [
   {
-    title: "nayhoo/ui",
+    title: "Homemade Recipes",
+    tags: ["React", "TypeScript", "vanilla-extract"],
+    description:
+      "An extension of @vanilla-extract/recipes that adds responsive variant utilities.",
+    sourceCodeLink: "https://github.com/timkinsman/homemade-recipes",
+  },
+  {
+    title: "@nayhoo/ui",
     tags: [
       "Radix Colors",
       "Radix Primitives",
@@ -18,7 +25,7 @@ export const projects: Project[] = [
     title: "Portfolio",
     tags: ["nayhoo/ui", "Next.js", "React Query", "TypeScript"],
     description:
-      "My portfolio site built with Next.js, nayhoo/ui for UI components, React Query for data fetching, and TypeScript for type safety and better DX.",
+      "My portfolio site built with Next.js, @nayhoo/ui for UI components, React Query for data fetching, and TypeScript for type safety and better DX.",
     sourceCodeLink: "https://github.com/timkinsman/portfolio",
   },
 ];
