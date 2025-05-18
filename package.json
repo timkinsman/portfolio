@@ -19,7 +19,7 @@
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@nayhoo/hooks": "^0.2.0",
-    "@nayhoo/ui": "^0.10.2",
+    "@nayhoo/ui": "^0.13.0",
     "@nayhoo/utils": "^0.1.1",
     "@next/mdx": "^15.3.1",
     "@next/third-parties": "^15.1.3",

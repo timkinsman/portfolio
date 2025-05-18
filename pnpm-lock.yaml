@@ -21,8 +21,8 @@ importers:
         specifier: ^0.2.0
         version: 0.2.0
       '@nayhoo/ui':
-        specifier: ^0.10.2
-        version: 0.10.2(@types/react-dom@19.0.2(@types/react@19.0.2))(@types/react@19.0.2)(esbuild@0.24.2)(jiti@2.4.2)(postcss@8.4.31)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.3.3)(yaml@2.3.1)
+        specifier: ^0.13.0
+        version: 0.13.0(@types/react-dom@19.0.2(@types/react@19.0.2))(@types/react@19.0.2)(esbuild@0.24.2)(jiti@2.4.2)(postcss@8.4.31)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.3.3)(yaml@2.3.1)
       '@nayhoo/utils':
         specifier: ^0.1.1
         version: 0.1.3
@@ -647,8 +647,8 @@ packages:
   '@nayhoo/tsconfig@1.0.0':
     resolution: {integrity: sha512-EmTe/KrmZtMD2xAawRE9HRsmEbhRsT0yKMoeE07eH/jl0VGQh9ntOb7S0Mi7pvMloa59ZQ+mK4PTXrjmZK7Miw==}
 
-  '@nayhoo/ui@0.10.2':
-    resolution: {integrity: sha512-AnoppS72YujVZfTqeyrsedkMTOOmhV0F5FjN2sO3bZaaSGqnj6M6yeYnfcLMiLETZyaU3lCJ6wtuKtijve6eXQ==}
+  '@nayhoo/ui@0.13.0':
+    resolution: {integrity: sha512-xsFtQHpsmiO1IsrvMgoVxzaXQrF1HAikQiV60Oqhk5PIk9fdaJ0qGQlpfsL2cr20XxJ7qF5c9Pmq8BBtvlaCQw==}
     peerDependencies:
       react: ~19.0.0
 
@@ -2507,6 +2507,11 @@ packages:
 
   history@5.3.0:
     resolution: {integrity: sha512-ZqaKwjjrAYUYfLG+htGaIIZ4nioX2L70ZUMIFysS3xvBsSG4x/n1V6TXV3N8ZYNuFGlDirFg32T7B6WOUPDYcQ==}
+
+  homemade-recipes@0.3.1:
+    resolution: {integrity: sha512-4+cOk97w5SD3N4eFhTE8jR9boxhlkoFaOE4910PO7uu87sNn6sbiw+uTJuaU/A2KvQBZ7dXU4VddBSwTLFAQWQ==}
+    peerDependencies:
+      '@vanilla-extract/css': ^1
 
   human-signals@4.3.1:
     resolution: {integrity: sha512-nZXjEF2nbo7lIw3mgYjItAfgQXog3OjJogSbKa2CQIIvSGWcKgeJnQlNXip6NglNzYH45nSRiEVimMvYL8DDqQ==}
@@ -4625,7 +4630,7 @@ snapshots:
 
   '@nayhoo/tsconfig@1.0.0': {}
 
-  '@nayhoo/ui@0.10.2(@types/react-dom@19.0.2(@types/react@19.0.2))(@types/react@19.0.2)(esbuild@0.24.2)(jiti@2.4.2)(postcss@8.4.31)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.3.3)(yaml@2.3.1)':
+  '@nayhoo/ui@0.13.0(@types/react-dom@19.0.2(@types/react@19.0.2))(@types/react@19.0.2)(esbuild@0.24.2)(jiti@2.4.2)(postcss@8.4.31)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.3.3)(yaml@2.3.1)':
     dependencies:
       '@radix-ui/colors': 3.0.0
       '@radix-ui/react-avatar': 1.1.2(@types/react-dom@19.0.2(@types/react@19.0.2))(@types/react@19.0.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -4646,6 +4651,7 @@ snapshots:
       '@vanilla-extract/esbuild-plugin': 2.3.14(esbuild@0.24.2)
       '@vanilla-extract/recipes': 0.5.5(@vanilla-extract/css@1.17.1)
       '@vanilla-extract/sprinkles': 1.6.3(@vanilla-extract/css@1.17.1)
+      homemade-recipes: 0.3.1(@vanilla-extract/css@1.17.1)
       react: 19.0.0
       tsup: 8.3.6(jiti@2.4.2)(postcss@8.4.31)(typescript@5.3.3)(yaml@2.3.1)
     transitivePeerDependencies:
@@ -6734,6 +6740,10 @@ snapshots:
   history@5.3.0:
     dependencies:
       '@babel/runtime': 7.26.7
+
+  homemade-recipes@0.3.1(@vanilla-extract/css@1.17.1):
+    dependencies:
+      '@vanilla-extract/css': 1.17.1
 
   human-signals@4.3.1: {}
 
