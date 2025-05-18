@@ -14,6 +14,8 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
+const NAV_HEIGHT = 48;
+
 const navigation = [
   { label: "About", path: "/" },
   { label: "Projects", path: "/projects" },
@@ -44,7 +46,10 @@ export const Nav = () => {
             <Button
               fullWidth
               key={item.label}
-              onClick={() => router.push(item.path)}
+              onClick={(e) => {
+                e.stopPropagation();
+                router.push(item.path);
+              }}
               style={{
                 justifyContent: "flex-start",
               }}
@@ -86,6 +91,7 @@ export const Nav = () => {
             paddingBottom: theme.space[2],
             paddingTop: theme.space[2],
             width: "100%",
+            height: NAV_HEIGHT,
           }}
         >
           <Flex align="center" gap="4" justify="between">
@@ -97,25 +103,14 @@ export const Nav = () => {
                 },
               })}
               size="2"
-              onClick={() => setIsDrawerOpen(true)}
+              onClick={() => setIsDrawerOpen(!isDrawerOpen)}
               round
             >
-              <svg
-                fill="currentColor"
-                clipRule="evenodd"
-                fillRule="evenodd"
-                strokeLinejoin="round"
-                strokeMiterlimit="2"
-                viewBox="0 0 24 24"
-                height={24}
-                width={24}
-                xmlns="http://www.w3.org/2000/svg"
+              <div
+                className={`${isDrawerOpen ? "open" : "closed"} burger-wrapper`}
               >
-                <path
-                  d="m22 16.75c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75z"
-                  fillRule="nonzero"
-                />
-              </svg>
+                <div className="hamburger" />
+              </div>
             </IconButton>
 
             <Box
@@ -185,15 +180,14 @@ export const Nav = () => {
 
         {isDrawerOpen && (
           <Box
-            onClick={() => setIsDrawerOpen(false)}
             style={{
-              backgroundColor: theme.semanticColors.transparentActive, // TODO: works but should this be this var?
+              backgroundColor: theme.semanticColors.background,
+              borderTop: `1px ${theme.semanticColors.line} solid`,
               bottom: 0,
               left: 0,
               position: "fixed",
               right: 0,
-              top: 0,
-              zIndex: theme.zIndices[2],
+              top: NAV_HEIGHT,
             }}
             className={sprinkles({
               display: {
@@ -202,18 +196,7 @@ export const Nav = () => {
               },
             })}
           >
-            <Box
-              style={{
-                backgroundColor: theme.semanticColors.background,
-                borderRight: `1px ${theme.semanticColors.line} solid`,
-                bottom: 0,
-                left: 0,
-                position: "fixed",
-                top: 0,
-              }}
-            >
-              <Navigation />
-            </Box>
+            <Navigation />
           </Box>
         )}
       </nav>

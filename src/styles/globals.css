@@ -217,3 +217,51 @@ table {
 a {
   text-decoration: unset;
 }
+
+.burger-wrapper {
+  position: relative;
+  user-select: none;
+}
+.burger-wrapper .hamburger {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.burger-wrapper .hamburger:before,
+.burger-wrapper .hamburger:after {
+  transition:
+    top 300ms 350ms ease,
+    transform 300ms 50ms ease;
+  position: absolute;
+  background: black;
+  width: 20px;
+  height: 2px;
+  content: "";
+}
+.burger-wrapper .hamburger:before {
+  top: -4px;
+  left: -10px;
+}
+.burger-wrapper .hamburger:after {
+  top: 4px;
+  left: -10px;
+}
+.open.burger-wrapper .hamburger {
+  background: transparent;
+}
+.open.burger-wrapper .hamburger:after,
+.open.burger-wrapper .hamburger:before {
+  transition:
+    top 300ms 50ms ease,
+    transform 300ms 350ms ease;
+  top: 0;
+}
+.open.burger-wrapper .hamburger:before {
+  transform: rotate(45deg);
+}
+.open.burger-wrapper .hamburger:after {
+  transform: rotate(-45deg);
+}
