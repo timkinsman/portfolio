@@ -34,10 +34,8 @@ const components = {
     <Heading level="6">{children}</Heading>
   ),
   p: Paragraph,
-  //   TODO: export LinkProps
   a: (props: React.ComponentProps<"a">) => (
-    // @ts-expect-error: need to resolve
-    <Link color="secondary" {...props} />
+    <Link {...props} color="secondary" />
   ),
   code: Code,
 };
