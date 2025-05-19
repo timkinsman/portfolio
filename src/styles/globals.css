@@ -233,12 +233,12 @@ a {
 .burger-wrapper .hamburger:before,
 .burger-wrapper .hamburger:after {
   transition:
-    top 300ms 350ms ease,
-    transform 300ms 50ms ease;
+    top 200ms 250ms ease,
+    transform 200ms 50ms ease;
   position: absolute;
-  background: black;
+  background: currentColor;
   width: 20px;
-  height: 2px;
+  height: 1.5px;
   content: "";
 }
 .burger-wrapper .hamburger:before {
@@ -255,8 +255,8 @@ a {
 .open.burger-wrapper .hamburger:after,
 .open.burger-wrapper .hamburger:before {
   transition:
-    top 300ms 50ms ease,
-    transform 300ms 350ms ease;
+    top 200ms 50ms ease,
+    transform 200ms 250ms ease;
   top: 0;
 }
 .open.burger-wrapper .hamburger:before {
