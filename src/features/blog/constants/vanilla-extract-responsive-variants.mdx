@@ -2,17 +2,14 @@
 title: 'Vanilla Extract with responsive variants'
 publishedAt: '2025-05-17'
 summary: 'Extending @vanilla-extract/recipes with tailwind-variant inspired `responsiveVariants`.'
+updatedAt: '2025-05-19'
 ---
 
-Vanilla Extract is a great styling solution. I discovered it after using Stitches quite a lot for personal use. But while Stitches is still a great option, it's unfortunately no longer actively maintained. So I looked for another styling library with great DX to play with, and found Vanilla Extract.
-
-> ["Basically, it's “CSS Modules-in-TypeScript” but with scoped CSS Variables + heaps more."](https://github.com/vanilla-extract-css/vanilla-extract)
-
-However I felt one feature was missing that I liked from Stitches when migrating my [personal component library](https://github.com/nayhoo/ui/tree/main/packages/ui), which was it's built-in support for [responsive variants](https://stitches.dev/docs/responsive-styles). The two libraries have different approaches to styling, so it's understandable that Vanilla Extract doesn't offer a similar solution. But I still wanted to bring responsive variants to my component library, this became the main motivation for creating Homemade Recipes.
+Vanilla Extract offers a powerful styling solution, essentially it's “CSS Modules in TypeScript” with scoped CSS variables and a lot more functionality. However, it does not have built in support for responsive variants, a feature available in [Stitches](https://stitches.dev/docs/responsive-styles#responsive-variants). After migrating my [UI library](https://github.com/nayhoo/ui/tree/main/packages/ui) from Stitches to Vanilla Extract, I wanted to retain this functionaolott. That became the main motivation behind creating Homemade Recipes.
 
 # Homemade Recipes
 
-I created a packaged called Homemade Recipes which is an extension of `@vanilla-extract/recipes` that adds responsive variants. It is built for projects that need responsive styling with recipes while keeping Vanilla Extract's type safety approach.
+A package which is an extension of `@vanilla-extract/recipes` that adds responsive variants. It is built for projects that need responsive styling with recipes while keeping Vanilla Extract's type safety approach.
 
 ## How it works
 
@@ -186,9 +183,7 @@ The classes
 
 ## Final thoughts
 
-Handling existing classes (i.e. "bright" in the example above) was the biggest unknown because it raised the question, "how to create a responsive version of a class that's not known at build time?". I'm not convinced with the current solution of sifting through css in the DOM at runtime and generating a new css sheet of responsive classes, but it is what I've landed on for the meantime.
-
-Please feel free to fork, use, or raise discussions/issues. I use this package with personal projects so I'll be working on making this the best it can be 😃
+Feel free to fork, use, or contribute by raising discussions or issues. Since I use this package in my personal projects, I'm committed to continually improving it. 😃
 
 [Source code](https://github.com/timkinsman/homemade-recipes/)
 
