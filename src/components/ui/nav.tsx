@@ -74,7 +74,6 @@ export const Nav = () => {
         },
       })}
       style={{
-        backgroundColor: theme.semanticColors.background,
         borderBottom: "1px solid",
         borderColor: isScrolled ? theme.semanticColors.line : "transparent",
         position: "fixed",
@@ -92,6 +91,8 @@ export const Nav = () => {
             paddingTop: theme.space[2],
             width: "100%",
             height: NAV_HEIGHT,
+            backgroundColor: `color-mix(in srgb, ${theme.semanticColors.background}, transparent 40%)`,
+            backdropFilter: "blur(10px)",
           }}
         >
           <Flex align="center" gap="4" justify="between">
@@ -181,13 +182,14 @@ export const Nav = () => {
         {isDrawerOpen && (
           <Box
             style={{
-              backgroundColor: theme.semanticColors.background,
               borderTop: `1px ${theme.semanticColors.line} solid`,
               bottom: 0,
               left: 0,
               position: "fixed",
               right: 0,
               top: NAV_HEIGHT,
+              backgroundColor: `color-mix(in srgb, ${theme.semanticColors.background}, transparent 40%)`,
+              backdropFilter: "blur(10px)",
             }}
             className={sprinkles({
               display: {
