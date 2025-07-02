@@ -1,3 +1,4 @@
+import { Badge } from "@nayhoo/ui/badge";
 import { Card } from "@nayhoo/ui/card";
 import { Flex } from "@nayhoo/ui/flex";
 import { Heading } from "@nayhoo/ui/heading";
@@ -18,21 +19,17 @@ export const BlogCard = ({ blogPost }: BlogCardProps) => {
         <Flex>
           <div>
             <Heading level="4">{blogPost.metadata.title}</Heading>
-
-            {/* TODO: blog tags / categories */}
-            {/* <Flex
-            gap="2"
-            className={sprinkles({
-              marginTop: {
-                initial: 2,
-              },
-            })}
-            wrap="wrap"
-          >
-            {project.tags.map((tag) => (
-              <Badge key={tag} label={tag} />
-            ))}
-          </Flex> */}
+            <Flex
+              gap="2"
+              className={sprinkles({
+                marginTop: 2,
+              })}
+              wrap="wrap"
+            >
+              {blogPost.metadata.tags
+                ?.split(",")
+                .map((tag) => <Badge key={tag} label={tag} />)}
+            </Flex>
 
             <Paragraph
               className={sprinkles({
@@ -53,11 +50,6 @@ export const BlogCard = ({ blogPost }: BlogCardProps) => {
               </Text>
             </div>
           </div>
-
-          {/* TODO: images? */}
-          {/* <div>
-            <img src={blogPost.metadata.image} />
-          </div> */}
         </Flex>
       </Card>
     </Link>

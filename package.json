@@ -43,8 +43,8 @@
   "devDependencies": {
     "@commitlint/cli": "^19.7.1",
     "@commitlint/config-conventional": "^19.7.1",
-    "@nayhoo/eslint-config": "^1.0.1",
-    "@nayhoo/prettier-config": "^1.0.0",
+    "@nayhoo/eslint-config": "^1.0.2",
+    "@nayhoo/prettier-config": "^1.0.2",
     "@nayhoo/tsconfig": "^1.0.0",
     "@types/node": "^20.6.3",
     "@types/react": "19.0.2",

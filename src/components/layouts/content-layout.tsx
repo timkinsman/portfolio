@@ -26,7 +26,7 @@ export const ContentLayout = ({ children, title }: ContentLayoutProps) => {
         <Flex
           gap="6"
           direction="column"
-          style={{ margin: "auto", maxWidth: "100%" }}
+          style={{ margin: "auto", width: "100%" }}
         >
           {title && <Header title={title} />}
           {children}
