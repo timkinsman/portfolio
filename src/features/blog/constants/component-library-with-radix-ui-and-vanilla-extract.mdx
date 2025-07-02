@@ -1,0 +1,67 @@
+---
+title: 'Component library with Radix UI and Vanilla Extract'
+publishedAt: '2025-??-??'
+summary: 'Building a personal component library with Radix-UI and Vanilla Extract for fun :-).'
+tags: 'Open source,Vanilla Extract,Radix-UI'
+---
+
+In a sea of component libraries out there, this adds nothing. This component library is built for the love of the game, to learn something and for personal use. But, I hope you learn something or you find something helpful in this post.
+
+[Source code](https://github.com/nayhoo/ui)
+
+# Monorepo setup
+
+Firstly, special thanks to [NiGhTTraX](https://github.com/NiGhTTraX) for the great [TypeScript monorepo template](https://github.com/NiGhTTraX/ts-monorepo).
+
+That template was the initial starting point for this component library. Some of the tooling and config between nayhoo/ui and NighTTrax/ts-monorepo does differ for personal choices, but a lot of the bones are still there.
+
+The basic project structure overview:
+```
++-- apps                  # 
+|   |
+|   +-- next              # nextjs app example using component library
+|   +-- react-cosmos      # 
+|   +-- vite              # vite app example using component library
+|
++-- packages              # 
+|   |
+|   +-- ui                # component library package
+|   +-- ...               # additional packages
+|
++-- package.json          # 
+|
++-- pnpm-workspace.yaml   # 
+|
++-- ...                   # additional files/folders
+```
+
+See the ui package [here](packages/ui).
+
+This monorepo also includes the following additional packages:
+- [eslint-config](https://github.com/nayhoo/ui/tree/main/packages/eslint-config): My personal ESLint config for TS projects.
+- [hooks](https://github.com/nayhoo/ui/tree/main/packages/hooks): A collection of React hooks.
+- [prettier-config](https://github.com/nayhoo/ui/tree/main/packages/prettier-config): My personal Prettier config.
+- [tsconfig](https://github.com/nayhoo/ui/tree/main/packages/tsconfig): My personal TS config.
+- [utils](https://github.com/nayhoo/ui/tree/main/packages/utils): A collection of utility functions.
+
+# Components + Styling
+
+## Radix UI
+
+The basis for components
+
+## Vanilla Extract
+
+The styling
+
+# Examples
+
+This portfolio site!
+
+[Source code](https://github.com/nayhoo/ui/)
+
+## Thanks
+
+- [TypeScript monorepo template](https://github.com/NiGhTTraX/ts-monorepo)
+- [Radix UI Primitives](https://www.radix-ui.com/primitives)
+- [Vanilla Extract](https://vanilla-extract.style/)

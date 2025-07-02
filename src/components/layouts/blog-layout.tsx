@@ -1,4 +1,5 @@
-import { BlogPost } from "@/features/blog/utils";
+import { BlogCard } from "@/features/blog/components/blog-card";
+import { BlogPost, getBlogPosts } from "@/features/blog/utils";
 import { Heading } from "@nayhoo/ui/heading";
 import { Separator } from "@nayhoo/ui/separator";
 import { Text } from "@nayhoo/ui/text";
@@ -12,7 +13,11 @@ type BlogLayoutProps = {
 };
 
 export const BlogLayout = ({ children, blogPost }: BlogLayoutProps) => {
-  // const blogPosts = getBlogPosts();
+  const blogPosts = getBlogPosts();
+
+  const otherBlogPosts = blogPosts.filter(
+    (item) => item.slug !== blogPost.slug,
+  );
 
   return (
     <ContentLayout>
@@ -34,7 +39,17 @@ export const BlogLayout = ({ children, blogPost }: BlogLayoutProps) => {
 
       <Separator />
 
-      <section>{/* other blogs */}</section>
+      <section>
+        <Heading level="3" style={{ marginBottom: theme.space[4] }}>
+          More things!
+        </Heading>
+
+        {otherBlogPosts.map((otherBlogPost) => (
+          <BlogCard key={otherBlogPost.slug} blogPost={otherBlogPost} />
+        ))}
+
+        {/* pagination dots */}
+      </section>
     </ContentLayout>
   );
 };
