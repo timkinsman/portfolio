@@ -1,43 +1,41 @@
 ---
-title: 'Component library with Radix UI and Vanilla Extract'
-publishedAt: '2025-??-??'
-summary: 'Building a personal component library with Radix-UI and Vanilla Extract for fun :-).'
-tags: 'Open source,Vanilla Extract,Radix-UI'
+title: "Component library with Radix UI and Vanilla Extract"
+publishedAt: "2025-??-??"
+summary: "Building a personal component library with Radix-UI and Vanilla Extract for fun :-)."
+tags: "Open source,Vanilla Extract,Radix-UI"
 ---
 
-In a sea of component libraries out there, this adds nothing. This component library is built for the love of the game, to learn something and for personal use. But, I hope you learn something or you find something helpful in this post.
+With all the component libraries out there, this adds nothing. This component library is built for the love of the game, to learn something and for personal use. But, I hope you learn something or you find something helpful in this post.
 
-[Source code](https://github.com/nayhoo/ui)
+[@nayhoo/ui source code](https://github.com/nayhoo/ui)
 
 # Monorepo setup
 
 Firstly, special thanks to [NiGhTTraX](https://github.com/NiGhTTraX) for the great [TypeScript monorepo template](https://github.com/NiGhTTraX/ts-monorepo).
 
-That template was the initial starting point for this component library. Some of the tooling and config between nayhoo/ui and NighTTrax/ts-monorepo does differ for personal choices, but a lot of the bones are still there.
+That template was the initial starting point for this component library. Some of the tooling and config between `nayhoo/ui` and `NighTTrax/ts-monorepo` does differ for personal choices, but a lot of the bones are still there.
 
-The basic project structure overview:
+The project structure basic overview:
+
 ```
-+-- apps                  # 
++-- apps                  # apps that consume the packages
 |   |
-|   +-- next              # nextjs app example using component library
-|   +-- react-cosmos      # 
-|   +-- vite              # vite app example using component library
+|   +-- next              # nextjs app example using /packages/ui
+|   +-- react-cosmos      # sandbox for developing and testing UI components
+|   +-- vite              # vite app example using /packages/ui
 |
-+-- packages              # 
++-- packages              # meant to be published to npm and installed
 |   |
 |   +-- ui                # component library package
 |   +-- ...               # additional packages
 |
-+-- package.json          # 
-|
-+-- pnpm-workspace.yaml   # 
-|
-+-- ...                   # additional files/folders
++-- ...                   # additional root files/folders
 ```
 
 See the ui package [here](packages/ui).
 
 This monorepo also includes the following additional packages:
+
 - [eslint-config](https://github.com/nayhoo/ui/tree/main/packages/eslint-config): My personal ESLint config for TS projects.
 - [hooks](https://github.com/nayhoo/ui/tree/main/packages/hooks): A collection of React hooks.
 - [prettier-config](https://github.com/nayhoo/ui/tree/main/packages/prettier-config): My personal Prettier config.
@@ -48,20 +46,167 @@ This monorepo also includes the following additional packages:
 
 ## Radix UI
 
-The basis for components
+Radix UI primitives are used as the basis for components that do have a Radix UI primitive counterpart (e.g. Checkbox, Dialog, Label etc.).
+
+The most simple component, `Box`, is one of the exceptions that does not use Radix UI primitives.
+
+```
+// packages/ui/src/components/box.tsx
+import { box } from "@/theme/styles/box.css";
+import { ComponentProps } from "@/types/component-props";
+import { mergeClasses } from "@/utils/merge-classes";
+import { Slot } from "@radix-ui/react-slot";
+
+const defaultElement = "div";
+
+export type BoxProps = ComponentProps<typeof defaultElement>;
+
+export const Box = ({ asChild, ...props }: BoxProps) => {
+  const Comp = asChild ? Slot : defaultElement;
+
+  return (
+    <Comp {...props} className={mergeClasses(box, props.className)}>
+      {props.children}
+    </Comp>
+  );
+};
+```
+
+Our components that do not use Radix UI primitives, follow this structure. A `defaultElement` is defined, props are defined with the custom type `ComponentProps`, which extends `React.ComponentProps` with `{ asChild?: boolean }` to allow [Polymorphism](https://mantine.dev/guides/polymorphic/). And the Vanilla Extract styles are merged with `props.className` (more on that in the Vanilla Extract section).
+
+The `Checkbox` component is one that does use Radix UI Primitives ([Checkbox](https://www.radix-ui.com/primitives/docs/components/checkbox)). If we do not need to build the primitive ourselves from scratch, we straight up don't need to (I like to use something that's well maintained instead). However, we do import it into our component library so we can style it to our liking.
+
+```
+// packages/ui/src/components/checkbox.tsx
+import { CheckboxVariants, checkboxRecipe } from "@/theme/recipes/checkbox.css";
+import { checkboxIndicator } from "@/theme/styles/checkbox.css";
+import { extractVariantsFromProps } from "@/utils/extract-variants";
+import { mergeClasses } from "@/utils/merge-classes";
+import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
+import { CheckIcon } from "@radix-ui/react-icons";
+
+export type CheckboxProps = CheckboxPrimitive.CheckboxProps & CheckboxVariants;
+
+export const Checkbox = ({ ...props }: CheckboxProps) => {
+  const [variants, rest] = extractVariantsFromProps(
+    props,
+    ...checkboxRecipe.variants(),
+  );
+
+  const checkbox = checkboxRecipe(variants);
+
+  return (
+    <CheckboxPrimitive.Root
+      {...rest}
+      className={mergeClasses(checkbox, rest.className)}
+    >
+      <CheckboxPrimitive.CheckboxIndicator className={checkboxIndicator}>
+        <CheckIcon />
+      </CheckboxPrimitive.CheckboxIndicator>
+    </CheckboxPrimitive.Root>
+  );
+};
+```
+
+Components that do use Radix UI primitives are handled a bit different. Primitives have an `asChild` prop so we don't need to add it with `defaultElement` and `ComponentProps`. We also are given the types we need imported from Radix UI, and this component also introduces how we handle Vanilla Extract recipes (which again I'll get more into in the Vanilla Extract section).
 
 ## Vanilla Extract
 
-The styling
+Vanilla Extract is the styling solution of choice. I think the DX is great and I do like the idea of generating static CSS files at build time (TypeScript is a big bonus too). There's much to cover that I won't touch on so check out the official docs [here](https://vanilla-extract.style/).
+
+### Themes
+
+This [Vanilla Extract feature](https://vanilla-extract.style/documentation/theming/) is what we're going to use for our type safe theme tokens and global stylesheets. I'm using [createThemeContract](https://vanilla-extract.style/documentation/api/create-theme-contract/) for theme tokens, [createTheme](https://vanilla-extract.style/documentation/api/create-theme/) for light/dark mode styles and [createGlobalTheme](https://vanilla-extract.style/documentation/global-api/create-global-theme/) for base theme styles.
+
+#### Theme contract
+
+Based on the System UI Theme Specification https://github.com/system-ui/theme-specification?tab=readme-ov-file#key-reference
+
+#### Light/dark mode theme
+
+#### Global theme
+
+### Styles
+
+Styles create a style rule with a locally scoped class name.
+
+This is super basic example but this will generate a css class (which was imported in the Box component example above) with `{ box-sizing: border-box }`
+
+```
+import { style } from "@vanilla-extract/css";
+
+export const box = style({
+  boxSizing: "border-box",
+});
+```
+
+### Recipes
+
+Recipes create multi-variant styles with a type-safe runtime API.
+
+This example is more involved, we've used our theme tokens and also have a size variant with a default of "4". We export the type
+
+```
+import { theme } from "@/theme/theme-contracts/theme-contract.css";
+import { RecipeVariants, recipe } from "@vanilla-extract/recipes";
+
+export const containerRecipe = recipe({
+  base: {
+    boxSizing: "border-box",
+    flexShrink: 0,
+
+    marginLeft: "auto",
+    marginRight: "auto",
+
+    paddingLeft: theme.space[5],
+    paddingRight: theme.space[5],
+  },
+
+  variants: {
+    size: {
+      "1": {
+        maxWidth: "430px",
+      },
+      "2": {
+        maxWidth: "715px",
+      },
+      "3": {
+        maxWidth: "1145px",
+      },
+      "4": {
+        maxWidth: "none",
+      },
+    },
+  },
+
+  defaultVariants: {
+    size: "4",
+  },
+});
+
+export type ContainerVariants = NonNullable<
+  RecipeVariants<typeof containerRecipe>
+>;
+```
+
+### Build configuration
+
+I handled on using tsup and esbuild (which will require the esbuild plugin)
+
+components are isolated to not mix server and client components
+
+package.json exports
 
 # Examples
 
-This portfolio site!
+This portfolio site is built with `@nayhoo/ui`! Check out the source code [here](https://github.com/timkinsman/portfolio/)
 
-[Source code](https://github.com/nayhoo/ui/)
+The monorepo also has a [nextjs](https://github.com/nayhoo/ui/tree/main/apps/next) and [vite](https://github.com/nayhoo/ui/tree/main/apps/vite) example.
+
+[@nayhoo/ui source code](https://github.com/nayhoo/ui/)
 
 ## Thanks
 
-- [TypeScript monorepo template](https://github.com/NiGhTTraX/ts-monorepo)
+- [NiGhTTraX](https://github.com/NiGhTTraX)
 - [Radix UI Primitives](https://www.radix-ui.com/primitives)
 - [Vanilla Extract](https://vanilla-extract.style/)
