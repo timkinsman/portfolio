@@ -28,4 +28,11 @@ export const projects: Project[] = [
       "My portfolio site built with Next.js, @nayhoo/ui for UI components, React Query for data fetching, and TypeScript for type safety and better DX.",
     sourceCodeLink: "https://github.com/timkinsman/portfolio",
   },
+  {
+    title: "matthewkinsman.com",
+    tags: ["Next.js", "TypeScript", "TailwindCSS"],
+    description:
+      "Portfolio site for Matthew Kinsman, Senior Product Desiner. built with Next.js, TailwindCSS, and TypeScript.",
+    sourceCodeLink: "https://matthewkinsman.com",
+  },
 ];
