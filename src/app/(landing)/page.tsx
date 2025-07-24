@@ -24,11 +24,7 @@ export default function Page() {
             EatClub
           </Link>{" "}
           and on a number of{" "}
-          <Link
-            color="secondary"
-            href="/projects"
-            target="_blank"
-          >
+          <Link color="secondary" href="/projects" target="_blank">
             projects
           </Link>
           .{" "}
