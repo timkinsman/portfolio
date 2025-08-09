@@ -17,7 +17,6 @@ export async function GET(): Promise<
       accessToken: env.PLEX_TOKEN,
       ip: env.PLEX_IP,
       port: env.PLEX_PORT,
-      protocol: "http",
     });
 
     const result = await plexAPI.sessions.getSessions();
