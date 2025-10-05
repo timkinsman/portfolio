@@ -23,23 +23,11 @@ export default function Page() {
           >
             EatClub
           </Link>{" "}
-          and on a number of projects, including{" "}
-          <Link
-            color="secondary"
-            href="https://www.github.com/timkinsman/homemade-recipes"
-            target="_blank"
-          >
-            Homemade Recipes
+          and on a number of{" "}
+          <Link color="secondary" href="/projects" target="_blank">
+            projects
           </Link>
-          , an extension of{" "}
-          <Link
-            color="secondary"
-            href="https://vanilla-extract.style/documentation/packages/recipes/"
-            target="_blank"
-          >
-            @vanilla-extract/recipes
-          </Link>{" "}
-          with responsive variants.{" "}
+          .{" "}
           <Link
             color="secondary"
             href={env.NEXT_PUBLIC_CV_GOOGLE_DRIVE_LINK}

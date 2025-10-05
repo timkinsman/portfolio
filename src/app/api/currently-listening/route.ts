@@ -4,9 +4,9 @@ import { PlexAPI } from "@lukehagar/plexjs";
 import { NextResponse } from "next/server";
 
 const CORS_HEADERS = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "GET, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type",
+  // "Access-Control-Allow-Origin": "*",
+  // "Access-Control-Allow-Methods": "GET, OPTIONS",
+  // "Access-Control-Allow-Headers": "Content-Type",
 };
 
 export async function GET(): Promise<
@@ -17,7 +17,7 @@ export async function GET(): Promise<
       accessToken: env.PLEX_TOKEN,
       ip: env.PLEX_IP,
       port: env.PLEX_PORT,
-      protocol: "http",
+      protocol: env.PLEX_PROTOCOL,
     });
 
     const result = await plexAPI.sessions.getSessions();
@@ -54,12 +54,12 @@ export async function GET(): Promise<
   }
 }
 
-export function OPTIONS() {
-  return new Response(null, {
-    status: 204,
-    headers: CORS_HEADERS,
-  });
-}
+// export function OPTIONS() {
+//   return new Response(null, {
+//     status: 204,
+//     headers: CORS_HEADERS,
+//   });
+// }
 
 const handleApiSuccess = <T>(data: T) => {
   return NextResponse.json(

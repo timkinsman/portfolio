@@ -1,5 +1,3 @@
-import { env } from "@/env.mjs";
-
 type RequestOptions = {
   method?: string;
   headers?: Record<string, string>;
@@ -31,10 +29,7 @@ async function fetchApi<T>(
 ): Promise<T> {
   const { method = "GET", headers = {}, params } = options;
 
-  const fullUrl = buildUrlWithParams(
-    `${env.NEXT_PUBLIC_API_URL}${url}`,
-    params,
-  );
+  const fullUrl = buildUrlWithParams(url, params);
 
   const response = await fetch(fullUrl, {
     method,
