@@ -1,6 +1,6 @@
 import { env } from "@/env.mjs";
 import { GetCurrentlyListeningApiResponse } from "@/types/api";
-// import { PlexAPI } from "@lukehagar/plexjs";
+import { PlexAPI } from "@lukehagar/plexjs";
 import { NextResponse } from "next/server";
 
 const CORS_HEADERS = {
@@ -13,56 +13,42 @@ export async function GET(): Promise<
   NextResponse<GetCurrentlyListeningApiResponse>
 > {
   try {
-    // const plexAPI = new PlexAPI({
-    //   accessToken: env.PLEX_TOKEN,
-    //   ip: env.PLEX_IP,
-    //   port: env.PLEX_PORT,
-    //   protocol: env.PLEX_PROTOCOL,
-    // });
-
-    // const result = await plexAPI.sessions.getSessions();
-    const url = `${env.PLEX_PROTOCOL}://${env.PLEX_IP}:${env.PLEX_PORT}/status/sessions?X-Plex-Token=${env.PLEX_TOKEN}`;
-    const response = await fetch(url);
-
-    if (!response.ok) {
-      const message = (await response.json()).message || response.statusText;
-      throw new Error(message);
-    }
-
-    const result = await response.json();
-
-    return handleApiSuccess({
-      isCurrentlyListening: false,
-      currentlyListening: result,
+    const plexAPI = new PlexAPI({
+      accessToken: env.PLEX_TOKEN,
+      ip: env.PLEX_IP,
+      port: env.PLEX_PORT,
+      protocol: env.PLEX_PROTOCOL,
     });
 
-    // const metadata = result.object?.mediaContainer?.metadata;
-    // const currentlyListening = metadata?.find(
-    //   (m) => m.user?.title === env.PLEX_USER && m.type === "track",
-    // );
+    const result = await plexAPI.sessions.getSessions();
 
-    // if (!currentlyListening) {
-    //   return handleApiSuccess({
-    //     isCurrentlyListening: false,
-    //     currentlyListening: null,
-    //   });
-    // }
+    const metadata = result.object?.mediaContainer?.metadata;
+    const currentlyListening = metadata?.find(
+      (m) => m.user?.title === env.PLEX_USER && m.type === "track",
+    );
 
-    // const { grandparentTitle: artist, title: track } = currentlyListening;
+    if (!currentlyListening) {
+      return handleApiSuccess({
+        isCurrentlyListening: false,
+        currentlyListening: null,
+      });
+    }
 
-    // if (!artist || !track) {
-    //   return handleApiSuccess({
-    //     isCurrentlyListening: false,
-    //     currentlyListening: null,
-    //   });
-    // }
+    const { grandparentTitle: artist, title: track } = currentlyListening;
 
-    // const data = { artist, track };
+    if (!artist || !track) {
+      return handleApiSuccess({
+        isCurrentlyListening: false,
+        currentlyListening: null,
+      });
+    }
 
-    // return handleApiSuccess({
-    //   isCurrentlyListening: true,
-    //   currentlyListening: data,
-    // });
+    const data = { artist, track };
+
+    return handleApiSuccess({
+      isCurrentlyListening: true,
+      currentlyListening: data,
+    });
   } catch (error: unknown) {
     return handleApiError(error);
   }
@@ -94,7 +80,7 @@ const handleApiError = (error: unknown) => {
   return NextResponse.json(
     {
       data: null,
-      error, // : `${error}`,
+      error: `${error}`,
       isError: true as const,
       isSuccess: false as const,
     },
