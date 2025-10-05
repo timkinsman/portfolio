@@ -1,4 +1,4 @@
-// import { env } from "@/env.mjs";
+import { env } from "@/env.mjs";
 import { GetCurrentlyListeningApiResponse } from "@/types/api";
 // import { PlexAPI } from "@lukehagar/plexjs";
 import { NextResponse } from "next/server";
@@ -13,11 +13,6 @@ export async function GET(): Promise<
   NextResponse<GetCurrentlyListeningApiResponse>
 > {
   try {
-    return handleApiSuccess({
-      isCurrentlyListening: false,
-      currentlyListening: null,
-    });
-
     // const plexAPI = new PlexAPI({
     //   accessToken: env.PLEX_TOKEN,
     //   ip: env.PLEX_IP,
@@ -26,6 +21,20 @@ export async function GET(): Promise<
     // });
 
     // const result = await plexAPI.sessions.getSessions();
+    const url = `${env.PLEX_PROTOCOL}://${env.PLEX_IP}:${env.PLEX_PORT}/status/sessions?X-Plex-Token=${env.PLEX_TOKEN}`;
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      const message = (await response.json()).message || response.statusText;
+      throw new Error(message);
+    }
+
+    const result = await response.json();
+
+    return handleApiSuccess({
+      isCurrentlyListening: false,
+      currentlyListening: result,
+    });
 
     // const metadata = result.object?.mediaContainer?.metadata;
     // const currentlyListening = metadata?.find(
