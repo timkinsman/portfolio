@@ -9,6 +9,7 @@ export const env = createEnv({
   server: {
     PLEX_IP: z.string(),
     PLEX_PORT: z.string(),
+    PLEX_PROTOCOL: z.enum(["http", "https"]),
     PLEX_TOKEN: z.string(),
     PLEX_USER: z.string(),
   },
@@ -31,8 +32,9 @@ export const env = createEnv({
     NEXT_PUBLIC_CV_GOOGLE_DRIVE_LINK:
       process.env.NEXT_PUBLIC_CV_GOOGLE_DRIVE_LINK,
     NEXT_PUBLIC_GTM_ID: process.env.NEXT_PUBLIC_GTM_ID,
-    PLEX_PORT: process.env.PLEX_PORT,
     PLEX_IP: process.env.PLEX_IP,
+    PLEX_PORT: process.env.PLEX_PORT,
+    PLEX_PROTOCOL: process.env.PLEX_PROTOCOL,
     PLEX_TOKEN: process.env.PLEX_TOKEN,
     PLEX_USER: process.env.PLEX_USER,
   },
