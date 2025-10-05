@@ -1,6 +1,6 @@
-import { env } from "@/env.mjs";
+// import { env } from "@/env.mjs";
 import { GetCurrentlyListeningApiResponse } from "@/types/api";
-import { PlexAPI } from "@lukehagar/plexjs";
+// import { PlexAPI } from "@lukehagar/plexjs";
 import { NextResponse } from "next/server";
 
 const CORS_HEADERS = {
@@ -13,42 +13,47 @@ export async function GET(): Promise<
   NextResponse<GetCurrentlyListeningApiResponse>
 > {
   try {
-    const plexAPI = new PlexAPI({
-      accessToken: env.PLEX_TOKEN,
-      ip: env.PLEX_IP,
-      port: env.PLEX_PORT,
-      protocol: env.PLEX_PROTOCOL,
-    });
-
-    const result = await plexAPI.sessions.getSessions();
-
-    const metadata = result.object?.mediaContainer?.metadata;
-    const currentlyListening = metadata?.find(
-      (m) => m.user?.title === env.PLEX_USER && m.type === "track",
-    );
-
-    if (!currentlyListening) {
-      return handleApiSuccess({
-        isCurrentlyListening: false,
-        currentlyListening: null,
-      });
-    }
-
-    const { grandparentTitle: artist, title: track } = currentlyListening;
-
-    if (!artist || !track) {
-      return handleApiSuccess({
-        isCurrentlyListening: false,
-        currentlyListening: null,
-      });
-    }
-
-    const data = { artist, track };
-
     return handleApiSuccess({
-      isCurrentlyListening: true,
-      currentlyListening: data,
+      isCurrentlyListening: false,
+      currentlyListening: null,
     });
+
+    // const plexAPI = new PlexAPI({
+    //   accessToken: env.PLEX_TOKEN,
+    //   ip: env.PLEX_IP,
+    //   port: env.PLEX_PORT,
+    //   protocol: env.PLEX_PROTOCOL,
+    // });
+
+    // const result = await plexAPI.sessions.getSessions();
+
+    // const metadata = result.object?.mediaContainer?.metadata;
+    // const currentlyListening = metadata?.find(
+    //   (m) => m.user?.title === env.PLEX_USER && m.type === "track",
+    // );
+
+    // if (!currentlyListening) {
+    //   return handleApiSuccess({
+    //     isCurrentlyListening: false,
+    //     currentlyListening: null,
+    //   });
+    // }
+
+    // const { grandparentTitle: artist, title: track } = currentlyListening;
+
+    // if (!artist || !track) {
+    //   return handleApiSuccess({
+    //     isCurrentlyListening: false,
+    //     currentlyListening: null,
+    //   });
+    // }
+
+    // const data = { artist, track };
+
+    // return handleApiSuccess({
+    //   isCurrentlyListening: true,
+    //   currentlyListening: data,
+    // });
   } catch (error: unknown) {
     return handleApiError(error);
   }
