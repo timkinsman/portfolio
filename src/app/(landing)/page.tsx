@@ -50,10 +50,10 @@ export default function Page() {
           or at{" "}
           <Link
             color="secondary"
-            href="mailto:tkinsm@gmail.com"
+            href="mailto:timkinsman@proton.me"
             target="_blank"
           >
-            tkinsm@gmail.com
+            timkinsman@proton.me
           </Link>
           .
         </Paragraph>
