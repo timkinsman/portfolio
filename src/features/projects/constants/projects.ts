@@ -32,7 +32,7 @@ export const projects: Project[] = [
     title: "matthewkinsman.com",
     tags: ["Next.js", "TypeScript", "TailwindCSS"],
     description:
-      "Portfolio site for Matthew Kinsman, Senior Product Designer. Built with Next.js, TailwindCSS, and TypeScript.",
+      "Portfolio site for Matthew Kinsman, Lead Product Designer. Built with Next.js, TailwindCSS, and TypeScript.",
     sourceCodeLink: "https://matthewkinsman.com",
   },
 ];
