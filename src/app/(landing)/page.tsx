@@ -11,31 +11,22 @@ export default function Page() {
     <ContentLayout title="Tim Kinsman">
       <Box>
         <Paragraph>
-          Hi! I&apos;m a front-end developer based in Adelaide.
+          Hi! I&apos;m a software engineer based in Adelaide.
         </Paragraph>
 
         <Paragraph style={{ marginTop: theme.space[3] }}>
           I work at{" "}
           <Link
             color="secondary"
-            href="https://www.eatclub.com.au/"
+            href="https://www.axcelerate.com/"
             target="_blank"
           >
-            EatClub
+            aXcelerate
           </Link>{" "}
           and on a number of{" "}
           <Link color="secondary" href="/projects">
             projects
-          </Link>
-          .{" "}
-          <Link
-            color="secondary"
-            href={env.NEXT_PUBLIC_CV_GOOGLE_DRIVE_LINK}
-            target="_blank"
-          >
-            CV
-          </Link>
-          .
+          </Link>.
         </Paragraph>
 
         <Paragraph style={{ marginTop: theme.space[3] }}>
