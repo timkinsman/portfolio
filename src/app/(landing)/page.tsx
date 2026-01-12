@@ -1,5 +1,4 @@
 import { ContentLayout } from "@/components/layouts/content-layout";
-import { env } from "@/env.mjs";
 import { RecentTrack } from "@/features/recent-track/components/recent-track";
 import { Box } from "@nayhoo/ui/box";
 import { Link } from "@nayhoo/ui/link";
@@ -26,7 +25,8 @@ export default function Page() {
           and on a number of{" "}
           <Link color="secondary" href="/projects">
             projects
-          </Link>.
+          </Link>
+          .
         </Paragraph>
 
         <Paragraph style={{ marginTop: theme.space[3] }}>
