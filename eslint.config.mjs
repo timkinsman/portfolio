@@ -19,8 +19,6 @@ export default [
       "**/dist/**",
       "**/build/**",
       "**/.next/**",
-      ".sst/**",
-      "**/sst-env.d.ts", // Ignore SST generated files that cause issues
       "**/next-env.d.ts", // Ignore Next.js generated files
       "eslint.config.*", // Ignore ESLint config files
     ],
@@ -33,13 +31,6 @@ export default [
       parserOptions: {
         tsconfigRootDir: __dirname,
       },
-    },
-  },
-  // Specific rules for certain files
-  {
-    files: ["**/sst.config.ts"],
-    rules: {
-      "@typescript-eslint/triple-slash-reference": "off",
     },
   },
 ];
