@@ -42,6 +42,7 @@
     "@nayhoo/eslint-config": "^1.0.5",
     "@nayhoo/prettier-config": "^1.0.4",
     "@nayhoo/tsconfig": "^1.0.4",
+    "@types/mdx": "^2.0.14",
     "@types/node": "20.19.39",
     "@types/react": "19.0.2",
     "@types/react-dom": "19.0.2",
