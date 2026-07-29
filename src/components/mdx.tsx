@@ -34,9 +34,7 @@ const components = {
     <Heading level="6">{children}</Heading>
   ),
   p: Paragraph,
-  a: (props: React.ComponentProps<"a">) => (
-    <Link {...props} color="secondary" />
-  ),
+  a: (props: React.ComponentProps<"a">) => <Link {...props} color="primary" />,
   code: Code,
 };
 

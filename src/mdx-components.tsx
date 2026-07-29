@@ -15,7 +15,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h6: ({ children }) => <Heading level="6">{children}</Heading>,
     p: ({ children }) => <Paragraph>{children}</Paragraph>,
     hr: (props) => <Separator {...props} />,
-    a: (props) => <Link color="secondary" {...props} />,
+    a: (props) => <Link color="primary" {...props} />,
     img: (props) => (
       <Image
         sizes="100vw"
