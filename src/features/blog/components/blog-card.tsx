@@ -26,9 +26,9 @@ export const BlogCard = ({ blogPost }: BlogCardProps) => {
               })}
               wrap="wrap"
             >
-              {blogPost.metadata.tags
-                ?.split(",")
-                .map((tag) => <Badge key={tag} label={tag} />)}
+              {blogPost.metadata.tags?.split(",").map((tag) => (
+                <Badge key={tag} label={tag} />
+              ))}
             </Flex>
 
             <Paragraph
