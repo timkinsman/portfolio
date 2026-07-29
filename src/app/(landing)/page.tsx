@@ -16,14 +16,14 @@ export default function Page() {
         <Paragraph style={{ marginTop: theme.space[3] }}>
           I work at{" "}
           <Link
-            color="secondary"
+            color="primary"
             href="https://www.axcelerate.com/"
             target="_blank"
           >
             aXcelerate
           </Link>{" "}
           and on a number of{" "}
-          <Link color="secondary" href="/projects">
+          <Link color="primary" href="/projects">
             projects
           </Link>
           .
@@ -32,7 +32,7 @@ export default function Page() {
         <Paragraph style={{ marginTop: theme.space[3] }}>
           You can contact me through{" "}
           <Link
-            color="secondary"
+            color="primary"
             href="https://www.linkedin.com/in/timkinsman"
             target="_blank"
           >
@@ -40,7 +40,7 @@ export default function Page() {
           </Link>{" "}
           or at{" "}
           <Link
-            color="secondary"
+            color="primary"
             href="mailto:timkinsman@proton.me"
             target="_blank"
           >

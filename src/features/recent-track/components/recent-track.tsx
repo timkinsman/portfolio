@@ -58,7 +58,7 @@ export const RecentTrack = () => {
       <Paragraph>
         Probably listening to{" "}
         <Link
-          color="secondary"
+          color="primary"
           href="https://www.youtube.com/watch?v=nJGUdo5PiTA"
           target="_blank"
         >
