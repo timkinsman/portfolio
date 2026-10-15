@@ -4,7 +4,7 @@ import { projects } from "@/features/projects/constants/projects";
 import { Grid } from "@nayhoo/ui/grid";
 
 export const metadata = {
-  title: "Projects | Tim Kinsman",
+  title: "Projects",
 };
 
 export default function Page() {

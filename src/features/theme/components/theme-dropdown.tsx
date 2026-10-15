@@ -24,9 +24,7 @@ export const ThemeDropdown = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <IconButton round size="2">
-          {getThemeIcon(t)}
-        </IconButton>
+        <IconButton size="2">{getThemeIcon(t)}</IconButton>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent>

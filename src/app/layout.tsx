@@ -28,7 +28,10 @@ const openSauceOne = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Tim Kinsman",
+  title: {
+    template: "%s | Tim Kinsman",
+    default: "Tim Kinsman",
+  },
   description: "React front-end developer based in Adelaide.",
 };
 

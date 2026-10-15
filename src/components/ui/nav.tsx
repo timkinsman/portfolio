@@ -1,7 +1,6 @@
 "use client";
 
 import { ThemeDropdown } from "@/features/theme/components/theme-dropdown";
-import { ThemeToggle } from "@/features/theme/components/theme-toggle";
 import { useScrollPosition } from "@nayhoo/hooks";
 import { Box } from "@nayhoo/ui/box";
 import { Button } from "@nayhoo/ui/button";
@@ -20,6 +19,7 @@ const navigation = [
   { label: "About", path: "/" },
   { label: "Projects", path: "/projects" },
   { label: "Blog", path: "/blog" },
+  { label: "Art", path: "/art" },
 ];
 
 export const Nav = () => {
@@ -78,7 +78,6 @@ export const Nav = () => {
         borderColor: isScrolled ? theme.semanticColors.line : "transparent",
         position: "fixed",
         top: 0,
-        transition: "border-color 0.4s, padding 0.4s",
         width: "100%",
         zIndex: theme.zIndices[1],
       }}
@@ -91,8 +90,7 @@ export const Nav = () => {
             paddingTop: theme.space[2],
             width: "100%",
             height: NAV_HEIGHT,
-            backgroundColor: `color-mix(in srgb, ${theme.semanticColors.background}, transparent 40%)`,
-            backdropFilter: "blur(10px)",
+            backgroundColor: theme.semanticColors.background,
           }}
         >
           <Flex align="center" gap="4" justify="between">
@@ -105,13 +103,39 @@ export const Nav = () => {
               })}
               size="2"
               onClick={() => setIsDrawerOpen(!isDrawerOpen)}
-              round
             >
-              <div
-                className={`${isDrawerOpen ? "open" : "closed"} burger-wrapper`}
-              >
-                <div className="hamburger" />
-              </div>
+              {isDrawerOpen ? (
+                <svg
+                  fill="currentColor"
+                  clipRule="evenodd"
+                  fillRule="evenodd"
+                  strokeLinejoin="round"
+                  strokeMiterlimit="2"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="m12 10.93 5.719-5.72c.146-.146.339-.219.531-.219.404 0 .75.324.75.749 0 .193-.073.385-.219.532l-5.72 5.719 5.719 5.719c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.385-.073-.531-.219l-5.719-5.719-5.719 5.719c-.146.146-.339.219-.531.219-.401 0-.75-.323-.75-.75 0-.192.073-.384.22-.531l5.719-5.719-5.72-5.719c-.146-.147-.219-.339-.219-.532 0-.425.346-.749.75-.749.192 0 .385.073.531.219z" />
+                </svg>
+              ) : (
+                <svg
+                  fill="currentColor"
+                  clipRule="evenodd"
+                  fillRule="evenodd"
+                  strokeLinejoin="round"
+                  strokeMiterlimit="2"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m22 16.75c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75z"
+                    fillRule="nonzero"
+                  />
+                </svg>
+              )}
             </IconButton>
 
             <Box
@@ -140,30 +164,10 @@ export const Nav = () => {
             </Box>
 
             <Flex gap="2">
-              <Box
-                className={sprinkles({
-                  display: {
-                    initial: "block",
-                    xs: "none",
-                  },
-                })}
-              >
-                <ThemeDropdown />
-              </Box>
-
-              <Box
-                className={sprinkles({
-                  display: {
-                    initial: "none",
-                    xs: "block",
-                  },
-                })}
-              >
-                <ThemeToggle />
-              </Box>
+              <ThemeDropdown />
 
               <NayhooLink href="https://github.com/timkinsman" target="_blank">
-                <IconButton round size="2">
+                <IconButton size="2">
                   <svg
                     fill="currentColor"
                     height="24"
@@ -188,8 +192,7 @@ export const Nav = () => {
               position: "fixed",
               right: 0,
               top: NAV_HEIGHT,
-              backgroundColor: `color-mix(in srgb, ${theme.semanticColors.background}, transparent 40%)`,
-              backdropFilter: "blur(10px)",
+              backgroundColor: theme.semanticColors.background,
             }}
             className={sprinkles({
               display: {
