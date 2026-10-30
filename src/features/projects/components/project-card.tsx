@@ -2,7 +2,6 @@ import { Project } from "@/features/projects/types/project";
 import { Badge } from "@nayhoo/ui/badge";
 import { Box } from "@nayhoo/ui/box";
 import { Card } from "@nayhoo/ui/card";
-import { Flex } from "@nayhoo/ui/flex";
 import { Heading } from "@nayhoo/ui/heading";
 import { Text } from "@nayhoo/ui/text";
 import { theme } from "@nayhoo/ui/theme";
@@ -16,7 +15,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
     <Link passHref href={project.sourceCodeLink}>
       <Card>
-        <Flex direction="column">
+        <Box display="flex" direction="column">
           <Heading level="4">{project.title}</Heading>
 
           <Box
@@ -35,7 +34,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
           <Text size="2" style={{ marginTop: theme.space[2] }}>
             {project.description}
           </Text>
-        </Flex>
+        </Box>
       </Card>
     </Link>
   );

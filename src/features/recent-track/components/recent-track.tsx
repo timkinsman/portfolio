@@ -1,7 +1,7 @@
 "use client";
 
 import { useCurrentlyListening } from "@/features/recent-track/api/get-currently-listening";
-import { Flex } from "@nayhoo/ui/flex";
+import { Box } from "@nayhoo/ui/box";
 import { Link } from "@nayhoo/ui/link";
 import { Skeleton } from "@nayhoo/ui/skeleton";
 import { Text } from "@nayhoo/ui/text";
@@ -24,10 +24,10 @@ export const RecentTrack = () => {
 
   if (currentlyListening.isLoading) {
     return (
-      <Flex align="center" gap="2" role="status">
+      <Box display="flex" align="center" gap="2" role="status">
         <Skeleton variant="avatar2" />
         <Skeleton style={{ width: "12rem" }} />
-      </Flex>
+      </Box>
     );
   }
 
@@ -36,24 +36,20 @@ export const RecentTrack = () => {
       const { artist, track } = currentlyListening.data.data.currentlyListening;
 
       return (
-        <Flex align="center" gap="2">
-          <Flex>
-            <Icon />
-          </Flex>
+        <Box display="flex" align="center" gap="2">
+          <Icon />
 
           <Text>
             Currently listening to {track} by {artist}.
           </Text>
-        </Flex>
+        </Box>
       );
     }
   }
 
   return (
-    <Flex align="center" gap="2">
-      <Flex>
-        <Icon />
-      </Flex>
+    <Box display="flex" align="center" gap="2">
+      <Icon />
 
       <Text>
         Probably listening to{" "}
@@ -66,6 +62,6 @@ export const RecentTrack = () => {
         </Link>
         .
       </Text>
-    </Flex>
+    </Box>
   );
 };

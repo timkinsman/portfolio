@@ -1,12 +1,12 @@
 import { getBlogPosts } from "@/features/blog/utils";
-import { Grid } from "@nayhoo/ui/grid";
+import { Box } from "@nayhoo/ui/box";
 import { BlogCard } from "./blog-card";
 
 export function BlogPosts() {
   const allBlogs = getBlogPosts();
 
   return (
-    <Grid gap="4">
+    <Box display="grid" gap="4">
       {allBlogs
         .sort((a, b) => {
           if (
@@ -20,6 +20,6 @@ export function BlogPosts() {
         .map((post) => (
           <BlogCard key={post.slug} blogPost={post} />
         ))}
-    </Grid>
+    </Box>
   );
 }
