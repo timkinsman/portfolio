@@ -117,13 +117,13 @@ export const Navigation = () => {
       {isDrawerOpen && (
         <Box
           style={{
-            borderTop: `1px ${theme.semanticColors.line} solid`,
+            borderTop: `1px ${theme.colors.line} solid`,
             bottom: 0,
             left: 0,
             position: "fixed",
             right: 0,
             top: NAV_HEIGHT,
-            backgroundColor: theme.semanticColors.background,
+            backgroundColor: theme.colors.background,
           }}
           display={{
             initial: "block",

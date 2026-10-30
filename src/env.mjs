@@ -19,7 +19,6 @@ export const env = createEnv({
    */
   client: {
     NEXT_PUBLIC_ANALYTICS_ID: z.string(),
-    NEXT_PUBLIC_CV_GOOGLE_DRIVE_LINK: z.string().url(),
     NEXT_PUBLIC_GTM_ID: z.string(),
   },
   /**
@@ -27,8 +26,6 @@ export const env = createEnv({
    */
   runtimeEnv: {
     NEXT_PUBLIC_ANALYTICS_ID: process.env.NEXT_PUBLIC_ANALYTICS_ID,
-    NEXT_PUBLIC_CV_GOOGLE_DRIVE_LINK:
-      process.env.NEXT_PUBLIC_CV_GOOGLE_DRIVE_LINK,
     NEXT_PUBLIC_GTM_ID: process.env.NEXT_PUBLIC_GTM_ID,
     PLEX_IP: process.env.PLEX_IP,
     PLEX_PORT: process.env.PLEX_PORT,
