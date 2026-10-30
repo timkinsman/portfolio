@@ -1,5 +1,5 @@
 import { Header } from "@/components/ui/header";
-import { Nav } from "@/components/ui/nav";
+import { Navigation } from "@/components/ui/nav";
 import { Container } from "@nayhoo/ui/container";
 import { Flex } from "@nayhoo/ui/flex";
 import * as React from "react";
@@ -12,7 +12,7 @@ type ContentLayoutProps = {
 export const ContentLayout = ({ children, title }: ContentLayoutProps) => {
   return (
     <main className="h-screen">
-      <Nav />
+      <Navigation />
 
       <Container
         className="h-screen"

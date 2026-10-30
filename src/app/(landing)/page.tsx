@@ -2,18 +2,16 @@ import { ContentLayout } from "@/components/layouts/content-layout";
 import { RecentTrack } from "@/features/recent-track/components/recent-track";
 import { Box } from "@nayhoo/ui/box";
 import { Link } from "@nayhoo/ui/link";
-import { Paragraph } from "@nayhoo/ui/paragraph";
+import { Text } from "@nayhoo/ui/text";
 import { theme } from "@nayhoo/ui/theme";
 
 export default function Page() {
   return (
     <ContentLayout title="Tim Kinsman">
       <Box>
-        <Paragraph>
-          Hi! I&apos;m a software engineer based in Adelaide.
-        </Paragraph>
+        <Text>Hi! I&apos;m a software engineer based in Adelaide.</Text>
 
-        <Paragraph style={{ marginTop: theme.space[3] }}>
+        <Text style={{ marginTop: theme.space[3] }}>
           I work at{" "}
           <Link
             color="primary"
@@ -27,9 +25,9 @@ export default function Page() {
             projects
           </Link>
           .
-        </Paragraph>
+        </Text>
 
-        <Paragraph style={{ marginTop: theme.space[3] }}>
+        <Text style={{ marginTop: theme.space[3] }}>
           You can contact me through{" "}
           <Link
             color="primary"
@@ -47,7 +45,7 @@ export default function Page() {
             timkinsman@proton.me
           </Link>
           .
-        </Paragraph>
+        </Text>
       </Box>
 
       <Box>

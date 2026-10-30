@@ -1,10 +1,9 @@
 import { Badge } from "@nayhoo/ui/badge";
+import { Box } from "@nayhoo/ui/box";
 import { Card } from "@nayhoo/ui/card";
-import { Flex } from "@nayhoo/ui/flex";
 import { Heading } from "@nayhoo/ui/heading";
-import { Paragraph } from "@nayhoo/ui/paragraph";
 import { Text } from "@nayhoo/ui/text";
-import { sprinkles, theme } from "@nayhoo/ui/theme";
+import { theme } from "@nayhoo/ui/theme";
 import Link from "next/link";
 import { BlogPost } from "../utils";
 
@@ -16,41 +15,31 @@ export const BlogCard = ({ blogPost }: BlogCardProps) => {
   return (
     <Link href={`/blog/${blogPost.slug}`} passHref>
       <Card>
-        <Flex>
-          <div>
+        <Box display="flex">
+          <Box>
             <Heading level="4">{blogPost.metadata.title}</Heading>
-            <Flex
+            <Box
+              display="flex"
               gap="2"
-              className={sprinkles({
-                marginTop: 2,
-              })}
+              style={{ marginTop: theme.space[2] }}
               wrap="wrap"
             >
               {blogPost.metadata.tags?.split(",").map((tag) => (
                 <Badge key={tag} label={tag} />
               ))}
-            </Flex>
+            </Box>
 
-            <Paragraph
-              className={sprinkles({
-                marginTop: 4,
-              })}
-              style={{ fontSize: theme.fontSizes[2] }}
-            >
+            <Text size="2" style={{ marginTop: theme.space[4] }}>
               {blogPost.metadata.summary}
-            </Paragraph>
+            </Text>
 
-            <div
-              className={sprinkles({
-                marginTop: 5,
-              })}
-            >
+            <Box style={{ marginTop: theme.space[5] }}>
               <Text size="1" color="subtle">
                 {blogPost.metadata.publishedAt} • {blogPost.readingTime}
               </Text>
-            </div>
-          </div>
-        </Flex>
+            </Box>
+          </Box>
+        </Box>
       </Card>
     </Link>
   );

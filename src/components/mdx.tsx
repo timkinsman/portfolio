@@ -1,6 +1,6 @@
 import { Heading } from "@nayhoo/ui/heading";
 import { Link } from "@nayhoo/ui/link";
-import { Paragraph } from "@nayhoo/ui/paragraph";
+import { Text } from "@nayhoo/ui/text";
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
 import React from "react";
 import { highlight } from "sugar-high";
@@ -33,7 +33,7 @@ const components = {
   h6: ({ children }: React.ComponentProps<"h6">) => (
     <Heading level="6">{children}</Heading>
   ),
-  p: Paragraph,
+  p: Text,
   a: (props: React.ComponentProps<"a">) => <Link {...props} color="primary" />,
   code: Code,
 };

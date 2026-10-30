@@ -3,8 +3,8 @@
 import { useCurrentlyListening } from "@/features/recent-track/api/get-currently-listening";
 import { Flex } from "@nayhoo/ui/flex";
 import { Link } from "@nayhoo/ui/link";
-import { Paragraph } from "@nayhoo/ui/paragraph";
 import { Skeleton } from "@nayhoo/ui/skeleton";
+import { Text } from "@nayhoo/ui/text";
 
 const Icon = () => (
   <svg
@@ -41,9 +41,9 @@ export const RecentTrack = () => {
             <Icon />
           </Flex>
 
-          <Paragraph>
+          <Text>
             Currently listening to {track} by {artist}.
-          </Paragraph>
+          </Text>
         </Flex>
       );
     }
@@ -55,7 +55,7 @@ export const RecentTrack = () => {
         <Icon />
       </Flex>
 
-      <Paragraph>
+      <Text>
         Probably listening to{" "}
         <Link
           color="primary"
@@ -65,7 +65,7 @@ export const RecentTrack = () => {
           Baths
         </Link>
         .
-      </Paragraph>
+      </Text>
     </Flex>
   );
 };
