@@ -1,7 +1,7 @@
 import { Heading } from "@nayhoo/ui/heading";
 import { Link } from "@nayhoo/ui/link";
-import { Paragraph } from "@nayhoo/ui/paragraph";
 import { Separator } from "@nayhoo/ui/separator";
+import { Text } from "@nayhoo/ui/text";
 import type { MDXComponents } from "mdx/types";
 import Image, { ImageProps } from "next/image";
 
@@ -13,7 +13,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h4: ({ children }) => <Heading level="4">{children}</Heading>,
     h5: ({ children }) => <Heading level="5">{children}</Heading>,
     h6: ({ children }) => <Heading level="6">{children}</Heading>,
-    p: ({ children }) => <Paragraph>{children}</Paragraph>,
+    p: ({ children }) => <Text>{children}</Text>,
     hr: (props) => <Separator {...props} />,
     a: (props) => <Link color="primary" {...props} />,
     img: (props) => (
