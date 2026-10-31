@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@nayhoo/ui/dropdown-menu";
 import { IconButton } from "@nayhoo/ui/icon-button";
-import { useTheme } from "@nayhoo/ui/providers";
+import { useTheme } from "@nayhoo/ui/providers/theme-provider";
 import { useEffect, useState } from "react";
 import { formatTheme } from "../utils/format-theme";
 import { getThemeIcon } from "../utils/get-theme-icon";

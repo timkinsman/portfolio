@@ -1,7 +1,7 @@
 "use client";
 
 import { queryClient } from "@/lib/react-query";
-import { ThemeProvider } from "@nayhoo/ui/providers";
+import { ThemeProvider } from "@nayhoo/ui/providers/theme-provider";
 import * as React from "react";
 import { QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";

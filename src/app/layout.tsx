@@ -1,31 +1,9 @@
 import { env } from "@/env.mjs";
 import "@/styles/globals.css";
-import "@nayhoo/ui/theme/index.css";
+import "@nayhoo/ui/style.css";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import { AppProvider } from "./provider";
-
-const openSauceOne = localFont({
-  src: [
-    {
-      path: "./fonts/OpenSauceOne/OpenSauceOne-Light.ttf",
-      weight: "300",
-      style: "light",
-    },
-    {
-      path: "./fonts/OpenSauceOne/OpenSauceOne-Regular.ttf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "./fonts/OpenSauceOne/OpenSauceOne-Bold.ttf",
-      weight: "700",
-      style: "bold",
-    },
-  ],
-  variable: "--font-open-sauce-one",
-});
 
 export const metadata: Metadata = {
   title: {
@@ -43,7 +21,7 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <GoogleTagManager gtmId={env.NEXT_PUBLIC_GTM_ID} />
-      <body className={`${openSauceOne.variable}`}>
+      <body>
         <AppProvider>{children}</AppProvider>
       </body>
       <GoogleAnalytics gaId={env.NEXT_PUBLIC_ANALYTICS_ID} />

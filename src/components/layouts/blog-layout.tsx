@@ -41,7 +41,7 @@ export const BlogLayout = ({ children, blogPost }: BlogLayoutProps) => {
 
       <section>
         <Heading level="3" style={{ marginBottom: theme.space[4] }}>
-          More things!
+          Other posts
         </Heading>
 
         {otherBlogPosts.map((otherBlogPost) => (

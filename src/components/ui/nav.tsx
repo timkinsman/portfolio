@@ -5,7 +5,7 @@ import { Box } from "@nayhoo/ui/box";
 import { Button } from "@nayhoo/ui/button";
 import { IconButton } from "@nayhoo/ui/icon-button";
 import { Link as NayhooLink } from "@nayhoo/ui/link";
-import { Nav } from "@nayhoo/ui/patterns";
+import { Nav } from "@nayhoo/ui/nav";
 import { theme } from "@nayhoo/ui/theme";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
