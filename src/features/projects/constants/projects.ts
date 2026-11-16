@@ -11,7 +11,6 @@ export const projects: Project[] = [
   {
     title: "@nayhoo/ui",
     tags: [
-      "Radix Colors",
       "Radix Primitives",
       "React",
       "TypeScript",
