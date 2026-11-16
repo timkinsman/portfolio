@@ -1,7 +1,7 @@
-import { Header } from "@/components/ui/header";
 import { Navigation } from "@/components/ui/nav";
 import { Box } from "@nayhoo/ui/box";
 import { Container } from "@nayhoo/ui/container";
+import { Heading } from "@nayhoo/ui/heading";
 import * as React from "react";
 
 type ContentLayoutProps = {
@@ -25,11 +25,11 @@ export const ContentLayout = ({ children, title }: ContentLayoutProps) => {
       >
         <Box
           display="flex"
-          gap="6"
+          gap="5"
           direction="column"
           style={{ margin: "auto", width: "100%" }}
         >
-          {title && <Header title={title} />}
+          {title && <Heading>{title}</Heading>}
           {children}
         </Box>
       </Container>

@@ -23,7 +23,7 @@ export const BlogLayout = ({ children, blogPost }: BlogLayoutProps) => {
           {blogPost.metadata.summary}
         </Text>
 
-        <Text size="1" color="subtle" style={{ marginTop: theme.space[5] }}>
+        <Text size="1" color="subtle" style={{ marginTop: theme.space[4] }}>
           {blogPost.metadata.publishedAt} • {blogPost.readingTime}
         </Text>
       </section>

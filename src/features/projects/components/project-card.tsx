@@ -14,9 +14,10 @@ export type ProjectCardProps = {
 export const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
     <Link passHref href={project.sourceCodeLink}>
-      <Card>
+      {/* TODO: remove this override once updated in ui lib */}
+      <Card style={{ padding: theme.space[4] }}>
         <Box display="flex" direction="column">
-          <Heading level="4">{project.title}</Heading>
+          <Heading as="h4">{project.title}</Heading>
 
           <Box
             display="flex"
@@ -31,7 +32,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
             ))}
           </Box>
 
-          <Text size="2" style={{ marginTop: theme.space[2] }}>
+          <Text style={{ marginTop: theme.space[4] }}>
             {project.description}
           </Text>
         </Box>

@@ -14,10 +14,11 @@ export type BlogCardProps = {
 export const BlogCard = ({ blogPost }: BlogCardProps) => {
   return (
     <Link href={`/blog/${blogPost.slug}`} passHref>
-      <Card>
+      {/* TODO: remove this override once updated in ui lib */}
+      <Card style={{ padding: theme.space[4] }}>
         <Box display="flex">
           <Box>
-            <Heading level="4">{blogPost.metadata.title}</Heading>
+            <Heading as="h4">{blogPost.metadata.title}</Heading>
             <Box
               display="flex"
               gap="2"
@@ -29,11 +30,11 @@ export const BlogCard = ({ blogPost }: BlogCardProps) => {
               ))}
             </Box>
 
-            <Text size="2" style={{ marginTop: theme.space[4] }}>
+            <Text style={{ marginTop: theme.space[4] }}>
               {blogPost.metadata.summary}
             </Text>
 
-            <Box style={{ marginTop: theme.space[5] }}>
+            <Box style={{ marginTop: theme.space[4] }}>
               <Text size="1" color="subtle">
                 {blogPost.metadata.publishedAt} • {blogPost.readingTime}
               </Text>

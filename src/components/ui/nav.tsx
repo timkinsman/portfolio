@@ -5,7 +5,7 @@ import { Box } from "@nayhoo/ui/box";
 import { Button } from "@nayhoo/ui/button";
 import { IconButton } from "@nayhoo/ui/icon-button";
 import { Link as NayhooLink } from "@nayhoo/ui/link";
-import { Nav } from "@nayhoo/ui/patterns";
+import { Nav } from "@nayhoo/ui/nav";
 import { theme } from "@nayhoo/ui/theme";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -36,7 +36,10 @@ export const Navigation = () => {
             xs: "none",
           }}
         >
-          <IconButton size="2" onClick={() => setIsDrawerOpen(!isDrawerOpen)}>
+          <IconButton
+            onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+            variant="ghost"
+          >
             {isDrawerOpen ? (
               <svg
                 fill="currentColor"
@@ -98,8 +101,12 @@ export const Navigation = () => {
         <Box display="flex" gap="2">
           <ThemeDropdown />
 
-          <NayhooLink href="https://github.com/timkinsman" target="_blank">
-            <IconButton size="2">
+          <NayhooLink
+            asChild
+            href="https://github.com/timkinsman"
+            target="_blank"
+          >
+            <IconButton variant="ghost">
               <svg
                 fill="currentColor"
                 height="24"
@@ -117,13 +124,13 @@ export const Navigation = () => {
       {isDrawerOpen && (
         <Box
           style={{
-            borderTop: `1px ${theme.colors.line} solid`,
+            borderTop: `1px ${theme.color.border.default} solid`,
             bottom: 0,
             left: 0,
             position: "fixed",
             right: 0,
             top: NAV_HEIGHT,
-            backgroundColor: theme.colors.background,
+            backgroundColor: theme.color.background.surface.default,
           }}
           display={{
             initial: "block",
@@ -151,8 +158,8 @@ export const Navigation = () => {
                     style={{
                       justifyContent: "flex-start",
                     }}
-                    variant={isSelected ? "primary" : "ghost"}
-                    size="3"
+                    sentiment="brand"
+                    variant={isSelected ? "solid" : "ghost"}
                   >
                     {item.label}
                   </Button>

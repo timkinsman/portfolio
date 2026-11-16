@@ -1,4 +1,4 @@
-import { UseThemeProps } from "@nayhoo/ui/providers";
+import { UseThemeProps } from "@nayhoo/ui/providers/theme-provider";
 
 export const getThemeIcon = (
   theme?: UseThemeProps["themes"][number] | null,

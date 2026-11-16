@@ -10,7 +10,7 @@ const NotFoundPage = () => {
   return (
     <ContentLayout>
       <Box style={{ textAlign: "center" }}>
-        <Heading level="1" style={{ marginBottom: theme.space[6] }}>
+        <Heading style={{ marginBottom: theme.space[6] }}>
           404 - Not Found
         </Heading>
 

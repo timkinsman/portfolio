@@ -10,7 +10,7 @@ export const metadata = {
 export default function Page() {
   return (
     <ContentLayout>
-      <Box display="grid" gap="8" columns={{ initial: "1", sm: "2" }}>
+      <Box display="grid" gap="5" columns={{ initial: "1", sm: "2" }}>
         {art.map((item) => (
           <ArtCard key={item.title} art={item} />
         ))}
