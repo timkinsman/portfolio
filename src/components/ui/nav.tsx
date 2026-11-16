@@ -102,7 +102,6 @@ export const Navigation = () => {
           <ThemeDropdown />
 
           <NayhooLink
-            asChild
             href="https://github.com/timkinsman"
             target="_blank"
           >
