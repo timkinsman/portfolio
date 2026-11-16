@@ -10,7 +10,13 @@ type ArtCardProps = {
 export const ArtCard = ({ art }: ArtCardProps) => {
   return (
     <Box display="flex" gap="2" direction="column">
-      <Image src={art.imageSrc} alt={art.title} />
+      <Image
+        src={art.imageSrc}
+        alt={art.title}
+        style={{
+          flex: 1,
+        }}
+      />
       <Text>
         {art.title} • {art.year}
       </Text>

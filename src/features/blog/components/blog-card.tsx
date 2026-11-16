@@ -15,31 +15,31 @@ export const BlogCard = ({ blogPost }: BlogCardProps) => {
   return (
     <Link href={`/blog/${blogPost.slug}`} passHref>
       {/* TODO: remove this override once updated in ui lib */}
-      <Card style={{ padding: theme.space[4] }}>
-        <Box display="flex">
-          <Box>
-            <Heading as="h4">{blogPost.metadata.title}</Heading>
-            <Box
-              display="flex"
-              gap="2"
-              style={{ marginTop: theme.space[2] }}
-              wrap="wrap"
-            >
-              {blogPost.metadata.tags?.split(",").map((tag) => (
-                <Badge key={tag} label={tag} />
-              ))}
-            </Box>
+      <Card
+        style={{
+          padding: `${theme.space[4]} ${theme.space[4]} ${theme.space[5]} ${theme.space[4]}`,
+        }}
+      >
+        <Heading as="h4">{blogPost.metadata.title}</Heading>
+        <Box
+          display="flex"
+          gap="2"
+          style={{ marginTop: theme.space[2] }}
+          wrap="wrap"
+        >
+          {blogPost.metadata.tags?.split(",").map((tag) => (
+            <Badge key={tag} label={tag} />
+          ))}
+        </Box>
 
-            <Text style={{ marginTop: theme.space[4] }}>
-              {blogPost.metadata.summary}
-            </Text>
+        <Text style={{ marginTop: theme.space[4] }}>
+          {blogPost.metadata.summary}
+        </Text>
 
-            <Box style={{ marginTop: theme.space[4] }}>
-              <Text size="1" color="subtle">
-                {blogPost.metadata.publishedAt} • {blogPost.readingTime}
-              </Text>
-            </Box>
-          </Box>
+        <Box style={{ marginTop: theme.space[4] }}>
+          <Text size="1" color="subtle">
+            {blogPost.metadata.publishedAt} • {blogPost.readingTime}
+          </Text>
         </Box>
       </Card>
     </Link>

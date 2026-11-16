@@ -15,27 +15,27 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
     <Link passHref href={project.sourceCodeLink}>
       {/* TODO: remove this override once updated in ui lib */}
-      <Card style={{ padding: theme.space[4] }}>
-        <Box display="flex" direction="column">
-          <Heading as="h4">{project.title}</Heading>
+      <Card
+        style={{
+          padding: `${theme.space[4]} ${theme.space[4]} ${theme.space[5]} ${theme.space[4]}`,
+        }}
+      >
+        <Heading as="h4">{project.title}</Heading>
 
-          <Box
-            display="flex"
-            gap="2"
-            style={{
-              marginTop: theme.space[2],
-            }}
-            wrap="wrap"
-          >
-            {project.tags.map((tag) => (
-              <Badge key={tag} label={tag} />
-            ))}
-          </Box>
-
-          <Text style={{ marginTop: theme.space[4] }}>
-            {project.description}
-          </Text>
+        <Box
+          display="flex"
+          gap="2"
+          style={{
+            marginTop: theme.space[2],
+          }}
+          wrap="wrap"
+        >
+          {project.tags.map((tag) => (
+            <Badge key={tag} label={tag} />
+          ))}
         </Box>
+
+        <Text style={{ marginTop: theme.space[4] }}>{project.description}</Text>
       </Card>
     </Link>
   );
