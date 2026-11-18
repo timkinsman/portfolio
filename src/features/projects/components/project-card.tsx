@@ -14,12 +14,7 @@ export type ProjectCardProps = {
 export const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
     <Link passHref href={project.sourceCodeLink}>
-      {/* TODO: remove this override once updated in ui lib */}
-      <Card
-        style={{
-          padding: `${theme.space[4]} ${theme.space[4]} ${theme.space[5]} ${theme.space[4]}`,
-        }}
-      >
+      <Card>
         <Heading as="h4">{project.title}</Heading>
 
         <Box

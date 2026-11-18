@@ -9,11 +9,9 @@ export default function Page() {
   return (
     <ContentLayout title="Tim Kinsman">
       <Box>
-        <Text size="3">
-          Hi! I&apos;m a software engineer based in Adelaide.
-        </Text>
+        <Text>Hi! I&apos;m a software engineer based in Adelaide.</Text>
 
-        <Text size="3" style={{ marginTop: theme.space[3] }}>
+        <Text style={{ marginTop: theme.space[3] }}>
           I work at{" "}
           <Link href="https://www.axcelerate.com/" target="_blank">
             aXcelerate
@@ -21,7 +19,7 @@ export default function Page() {
           and on a number of <Link href="/projects">projects</Link>.
         </Text>
 
-        <Text size="3" style={{ marginTop: theme.space[3] }}>
+        <Text style={{ marginTop: theme.space[3] }}>
           You can contact me through{" "}
           <Link href="https://www.linkedin.com/in/timkinsman" target="_blank">
             LinkedIn

@@ -3,64 +3,54 @@
 import { useCurrentlyListening } from "@/features/recent-track/api/get-currently-listening";
 import { Box } from "@nayhoo/ui/box";
 import { Link } from "@nayhoo/ui/link";
-import { Skeleton } from "@nayhoo/ui/skeleton";
 import { Text } from "@nayhoo/ui/text";
-import { spin, theme } from "@nayhoo/ui/theme";
-
-const Icon = () => (
-  <svg
-    fill="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    style={{
-      animation: `${spin} 1.5s linear infinite`,
-    }}
-  >
-    <path d="M14 12c0 1.103-.897 2-2 2s-2-.897-2-2 .897-2 2-2 2 .897 2 2zm10 0c0 6.627-5.373 12-12 12s-12-5.373-12-12 5.373-12 12-12 12 5.373 12 12zm-15.44 4.912c-.572-.401-1.07-.899-1.471-1.471l-3.691 1.641c.859 1.45 2.071 2.662 3.521 3.521l1.641-3.691zm7.44-4.912c0-2.209-1.791-4-4-4s-4 1.791-4 4 1.791 4 4 4 4-1.791 4-4zm4.603-5.08c-.859-1.451-2.071-2.663-3.522-3.522l-1.641 3.691c.572.401 1.07.899 1.472 1.471l3.691-1.64z" />
-  </svg>
-);
-
-// TODO: could probs make the skeleton better DX for icons and text
 
 export const RecentTrack = () => {
-  const { isLoading, isSuccess, data } = useCurrentlyListening({});
+  const { isLoading, isError, isSuccess, data } = useCurrentlyListening({});
 
   return (
     <Box display="flex" align="center" gap="2">
-      <Skeleton loaded={!isLoading}>
-        <div style={{ height: "24px", borderRadius: theme.radii[2] }}>
-          <Icon />
-        </div>
-      </Skeleton>
+      <svg
+        width="15"
+        height="15"
+        viewBox="0 0 15 15"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M7.46968 1.05085C7.64122 1.13475 7.75 1.30904 7.75 1.5V13.5C7.75 13.691 7.64122 13.8653 7.46968 13.9492C7.29813 14.0331 7.09377 14.0119 6.94303 13.8947L3.2213 11H1.5C0.671571 11 0 10.3284 0 9.5V5.5C0 4.67158 0.671573 4 1.5 4H3.2213L6.94303 1.10533C7.09377 0.988085 7.29813 0.966945 7.46968 1.05085ZM6.75 2.52232L3.69983 4.89468C3.61206 4.96294 3.50405 5 3.39286 5H1.5C1.22386 5 1 5.22386 1 5.5V9.5C1 9.77615 1.22386 10 1.5 10H3.39286C3.50405 10 3.61206 10.0371 3.69983 10.1053L6.75 12.4777V2.52232ZM10.2784 3.84804C10.4623 3.72567 10.7106 3.77557 10.833 3.95949C12.2558 6.09798 12.2558 8.90199 10.833 11.0405C10.7106 11.2244 10.4623 11.2743 10.2784 11.1519C10.0944 11.0296 10.0445 10.7813 10.1669 10.5973C11.4111 8.72728 11.4111 6.27269 10.1669 4.40264C10.0445 4.21871 10.0944 3.97041 10.2784 3.84804ZM12.6785 1.43044C12.5356 1.2619 12.2832 1.24104 12.1147 1.38386C11.9462 1.52667 11.9253 1.77908 12.0681 1.94762C14.7773 5.14488 14.7773 9.85513 12.0681 13.0524C11.9253 13.2209 11.9462 13.4733 12.1147 13.6161C12.2832 13.759 12.5356 13.7381 12.6785 13.5696C15.6406 10.0739 15.6406 4.92612 12.6785 1.43044Z"
+          fill="currentColor"
+          fillRule="evenodd"
+          clipRule="evenodd"
+        ></path>
+      </svg>
 
-      <Skeleton loaded={!isLoading}>
-        <div
-          style={{
-            height: isLoading ? "12px" : "",
-            borderRadius: theme.radii[2],
-          }}
-        >
-          {isSuccess && data.data?.isCurrentlyListening ? (
-            <Text color="subtle" size="3">
-              Currently listening to {data.data.currentlyListening.track} by{" "}
-              {data.data.currentlyListening.artist}.
-            </Text>
-          ) : (
-            <Text>
-              Probably listening to{" "}
-              <Link
-                href="https://www.youtube.com/watch?v=nJGUdo5PiTA"
-                target="_blank"
-              >
-                Baths
-              </Link>
-              .
-            </Text>
-          )}
-        </div>
-      </Skeleton>
+      <Text color="subtle" size="1">
+        {isLoading && (
+          <>
+            Checking<span className="dots"></span>
+          </>
+        )}
+        {isSuccess && data.data?.isCurrentlyListening && (
+          <>
+            Currently listening to {data.data.currentlyListening.track} by{" "}
+            {data.data.currentlyListening.artist}.
+          </>
+        )}
+
+        {(isError || (isSuccess && data.data?.isCurrentlyListening)) && (
+          <>
+            Probably listening to{" "}
+            <Link
+              href="https://www.youtube.com/watch?v=nJGUdo5PiTA"
+              target="_blank"
+            >
+              Baths
+            </Link>
+            .
+          </>
+        )}
+      </Text>
     </Box>
   );
 };
